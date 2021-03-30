@@ -9,7 +9,6 @@
     <title>Proyecto</title>
 </head>
 
-
 <body>
     <div>
         <!--======= Inicio de Navegacion =========-->
@@ -54,9 +53,7 @@
                     <div class="flex justify-end">
                         <h3 class="text-xl font-bold">Número de Cedula : </h3>
                         <imput class="text-xl"> 1755731542</imput>
-
                     </div>
-
                 </li>
             </ul>
         </div>

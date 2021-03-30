@@ -14,5 +14,54 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('mas_cursos');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Login
+// Actualizacion de datos
+// Cursos recividos
+// encuesta -> encuesta
+
+
+
+
+
+
+
+
+
+
+
+
+
+// - colores
+
+/*
+6BAAE5
+8CBE11
+00C273
+#2FBEC2
+34D399
+ * 
+*/
+// navegacion
+// 200:'#8CBE11'
+// contenido
+
+// footer
+
+// footer_pequeño

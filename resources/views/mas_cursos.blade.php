@@ -11,8 +11,9 @@
 <body>
 
     <div class="w-full max-w-8xl mx-auto">
+        
   <!--panel navegacion-->
-        <nav class="bg-green-400">
+        <nav class="bg-green-200">
             <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                 <div class="relative flex items-center justify-between h-16">
                     <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -98,7 +99,7 @@
                             <div class="text-sm text-gray-900">25/03/2021</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">40 Horas</span>
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-400 text-green-800">40 Horas</span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center">
                             <button href="#" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">VER</button>
