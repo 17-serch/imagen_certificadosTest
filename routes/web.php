@@ -14,13 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('mas_cursos');
+    return view('login');
 });
 
+Route::get('actualizacion/', function () {
+    return view('actualizacion_datos');
+});
 
+Route::get('cursos_recividos/', function () {
+    return view('Cursos_Recividos');
+});
 
+Route::get('formulario/', function () {
+    return view('formulario');
+});
 
-
+Route::get('mas_cursos/', function () {
+    return view('mas_cursos');
+});
 
 
 

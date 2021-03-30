@@ -32,7 +32,7 @@
                         </div>
                         <div class="hidden sm:block sm:ml-6">
                             <div class="flex space-x-4">
-                                <a href="#" class="bg-green-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Tablero</a>
+                                <a href="#" class="bg-green-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Cursos Recibidos</a>
                             </div>
                         </div>
                     </div>
