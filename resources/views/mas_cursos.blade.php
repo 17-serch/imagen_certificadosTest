@@ -69,7 +69,7 @@
 
     <!--titutlo-->
         <div class=" text-center pb-10 pt-10 ">
-            <h1 class="font-bold text-green-800 break-normal text-3xl md:text-5xl">Mas Cursos Para TI</h1>
+            <h1 class="font-bold text-green-800 break-normal text-3xl md:text-5xl">Mas Cursos Para Ti</h1>
         </div>
         <!--tabla-->
         <div class="container mx-auto bg-green-200 rounded  px-8 py-8 text-center overflow-y-auto scrollbar-w-2">
