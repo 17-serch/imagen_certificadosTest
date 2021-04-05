@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('login');
 });
 
+Route::get('/', function () {
+    return view('crear_cuenta');
+});
+
 Route::get('actualizacion/', function () {
     return view('actualizacion_datos');
 });
