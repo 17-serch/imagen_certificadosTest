@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Actualizacion</title>
+    <title>Subir Certificados</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
@@ -25,39 +25,65 @@
                 </a> 
             </div>    
         </div>
-        <div class="grid grid-rows-5 gap-3">
+        <div class="grid grid-rows-6 gap-3">
             <div class="object-bottom mt-12">
-                <h1 class='text-center text-3xl sm:text-6xl object-scale-down '>Actualiza tus datos</h1>
+                <h1 class='text-center text-3xl sm:text-6xl object-scale-down '>Subir Certificados</h1>
             </div>
             <div class="md:flex w-9/12 max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
                 <div class="p-8">
-                    <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Nombres</h1>
-                    <input type="text" class="mt-5 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="Lucia Mary">
+                    <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Formulario</h1>
+                    <button type="submit" class="mt-5 pr-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-xl font- rounded-xl text-black bg-grey-200 hover:bg-grey-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ">
+                    ir
+                    </button>
                 </div>
             </div>
                     
             <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
                 <div class="p-8 ">
-                    <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Apellidos</h1>
-                    <input type="text" class="mt-5 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="Garcia Perez">
+                    <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Nombre Curso</h1>
+                    <input type="text" class="mt-5 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="Programacion New">
                 </div>
             </div>
                 
             <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
                 <div class="p-8">
-                    <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Celular</h1>
-                    <input type="text" class="mt-5 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="0987532156">
+                    <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Horas del Curso</h1>
+                    <div class="relative">
+                        <select class="mt-5 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md">
+                            <option>30</option>
+                            <option>50</option>
+                            <option>80</option>
+                            <option>90</option>
+                            <option>100</option>
+                        </select>
+                        <div class="pointer-events-none">
+                            <svg class="fill-current h-4 w-4" viewBox="0 0 20 20"></svg>
+                        </div>
+                    </div>
                 </div>
             </div>
             
                 
             <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
                 <div class="p-8">
-                    <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Cédula o pasaporte</h1>
-                    <input type="text" class="mt-5 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="1254896352">
+                    <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Enlace a Google Forms</h1>
+                    <button type="submit" class="mt-5 pr-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-xl font- rounded-xl text-black bg-grey-200 hover:bg-grey-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ">
+                    ir
+                    </button>
                 </div>
             </div>
+
+            <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
+                <div class="p-8">
+                    <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Subir Imagenes</h1>
+                    <input class="rounded" type="file" name="Imagenes_certificados" id="Imagenes_certificados">
+                </div>
+            </div>
+
         </div>
+        
+        
+
 
         <div class="text-left mb-8">
             <button type="submit" class="ml-20 mt-5 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-xl font- rounded-xl text-black bg-grey-200 hover:bg-grey-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
