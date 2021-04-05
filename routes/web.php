@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('login/', function () {
     return view('login');
 });
 Route::get('login/', function () {
@@ -40,7 +40,13 @@ Route::get('mas_cursos/', function () {
     return view('mas_cursos');
 });
 
+Route::get('nuevos_cursos/', function () {
+    return view('nuevos_cursos');
+});
 
+Route::get('subir_certificados/', function () {
+    return view('subir_certificados');
+});
 
 
 
