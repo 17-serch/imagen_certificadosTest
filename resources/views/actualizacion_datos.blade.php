@@ -30,7 +30,7 @@
         height: 900px;
     }
 </style>
-<body class="bg-green-150">
+<body class="bg-grey-100">
     <div id='General' class="bg-white">
         <div id='primero'>
             <img src="https://www.gobiernoabierto.ec/wp-content/uploads/2020/01/Logo-Esquel-color.png"
