@@ -16,17 +16,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('login');
 });
+Route::get('login/', function () {
+    return view('login');
+});
 
-Route::get('/', function () {
+Route::get('crear_cuenta/', function () {
     return view('crear_cuenta');
 });
 
-Route::get('actualizacion/', function () {
+Route::get('actualizacion_datos/', function () {
     return view('actualizacion_datos');
 });
 
 Route::get('cursos_recividos/', function () {
-    return view('Cursos_Recividos');
+    return view('cursos_recividos');
 });
 
 Route::get('formulario/', function () {
