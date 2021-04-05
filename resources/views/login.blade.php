@@ -50,7 +50,7 @@
 
                 <div class="text-gray-50 mt-6">
                     ¿No dispones de una cuenta?
-                    <a href="C:\Users\User\Dropbox\Mi PC (Home)\Desktop\certificados\certificadosTest\resources\views\crear_cuenta.blade.php" class="no-underline border-b border-blue-500 text-gray-200">
+                    <a href="" class="no-underline border-b border-blue-500 text-gray-200">
                         Crea Aquí
                     </a>.
                 </div>
