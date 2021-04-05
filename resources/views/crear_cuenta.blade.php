@@ -11,13 +11,13 @@
         <link rel="stylesheet" href="{{ asset('css/app.css')}}">
         
     </head>
-<body class="bg-gray-700">
+<body class="bg-blue-200">
 	<div class="bg-grey-lighter min-h-screen flex flex-col">
             <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                <div class="bg-green-100 px-7 py-9 rounded shadow-md w-full">
+                <div class="bg-green-400 px-7 py-9 rounded shadow-md w-full">
                     <h1 class="mb-8 text-5xl text-center font-serif md:georgia text-gray-600">Login</h1>
 
-                    <img src="/img/logo.png">
+                    <img src="https://www.gobiernoabierto.ec/wp-content/uploads/2020/01/Logo-Esquel-color.png" alt="logo" class="fill-current h-100 w-100 mr-2" width="250" height="250">
 
                     <label class="uppercase tracking-wide text-indigo-600 font-serif mb-10 w-50 text-xl"
                         for="usuario"> Usuario 
@@ -25,7 +25,7 @@
                     
                     <input 
                         type="text"
-                        class="block border border-gray-600  w-full p-3 rounded mb-4 text-blue-800"
+                        class="block border border-white  w-full p-3 rounded mb-4 text-blue-800"
                         name="usuario"
                         placeholder=""/>
 
@@ -35,7 +35,7 @@
 
                     <input 
                         type="password"
-                        class="block border border-gray-600 w-full p-3 rounded mb-4 text-blue-800"
+                        class="block border border-white w-full p-3 rounded mb-4 text-blue-800"
                         name="password"
                         placeholder=""/>
                     
@@ -47,14 +47,15 @@
 
                     <input 
                         type="password"
-                        class="block border border-gray-600 w-full p-3 rounded mb-4 text-blue-800"
+                        class="block border border-white w-full p-3 rounded mb-4 text-blue-800"
                         name="password"
                         placeholder=""/>
 
                     <a href="#">   
                     
-                    <button class="bg-blue hover:bg-blue-dark text-gray-500 font-bold py-2 px-4 rounded text-2xl">
-                        Crear  
+                    <div class="text-center text-sm text-grey-100 mt-3">
+                    <button class="bg-blue hover:bg-blue-dark text-gray-100 font-bold py-2 px-4 rounded text-2xl">
+                        crear  
                     </button>
                     </div>
                         
