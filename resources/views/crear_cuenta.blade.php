@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Login</title>
+        <title>crear cuenta</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
 	<div class="bg-grey-lighter min-h-screen flex flex-col">
             <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <div class="bg-green-400 px-7 py-9 rounded shadow-md w-full">
-                    <h1 class="mb-8 text-5xl text-center font-serif md:georgia text-gray-600">Login</h1>
+                    <h1 class="mb-8 text-5xl text-center font-serif md:georgia text-gray-600">CREAR CUENTA</h1>
 
                     <img src="https://www.gobiernoabierto.ec/wp-content/uploads/2020/01/Logo-Esquel-color.png" alt="logo" class="fill-current h-100 w-100 mr-2" width="250" height="250">
 
