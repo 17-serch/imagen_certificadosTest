@@ -25,19 +25,11 @@
                 </a> 
             </div>    
         </div>
-        <div class="grid grid-rows-5 gap-3">
+        <div class="grid grid-rows-4 gap-3">
             <div class="object-bottom mt-12">
                 <h1 class='text-center text-3xl sm:text-6xl object-scale-down '>Nuevos Cursos</h1>
             </div>
-            <div class="md:flex w-9/12 max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
-                <div class="p-8">
-                    <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Formulario</h1>
-                    <button type="submit" class="mt-5 pr-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-xl font- rounded-xl text-black bg-grey-200 hover:bg-grey-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ">
-                    ir
-                    </button>
-                </div>
-            </div>
-                    
+
             <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
                 <div class="p-8 ">
                     <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Nuevo Curso</h1>
