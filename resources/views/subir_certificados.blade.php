@@ -68,7 +68,7 @@
             <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
                 <div class="p-8">
                     <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Subir Imagenes</h1>
-                    <input class="mt-5 rounded" type="file" name="Imagenes_certificados" id="Imagenes_certificados">
+                    <input class="mt-5 rounded" type="file" name="lista[]" id="Imagenes_certificados" multiple/>
                 </div>
             </div>
 
