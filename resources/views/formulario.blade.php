@@ -9,19 +9,19 @@
 </head>
 <body class="bg-grey-100">
 <div class="max-w-6xl mx-auto sm:px-40 lg:px-40">
-               
+
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg centrar" >
                 <div class="flex grid grid-cols-1 sm:grid-cols-2 gap-3 my-2 " >
             <div>
                 <a href="https://www.esquel.org.ec/">
                     <img class="transform scale-75 sm:scale-100 object-center md:object-top" src="https://www.esquel.org.ec/templates/g5_hydrogen/custom/images/Logo%20Esquel%20Horizontal.svg"alt="Fundacion Esquel" link="https://www.esquel.org.ec/" >
                 </a>
-            </div> 
+            </div>
             <div>
                 <a href="https://esquelclic.org/">
                     <img class="transform scale-75 sm:scale-100 object-center md:object-top" src="https://esquelclic.org/images/logos/LogoCLIC%20.svg" alt="esquel clic">
-                </a> 
-            </div>    
+                </a>
+            </div>
         </div>
                         <div class="p-20">
                             <div class="flex items-center">
@@ -32,36 +32,39 @@
                             <form action="ejemplo.php" method="get" >
                                         <p class=" text-black py-2 px-4 font-bold mt-5" >Apellido:
                                         <input  class=" text-black py-1 px-4 font-bold mt-5" type="text" name="apellidos" size="40" placeholder="Escriba su apellido" ></p>
-                                        <p class=" text-black py-2 px-4 font-bold mt-1" >Nombre:  
+                                        <p class=" text-black py-2 px-4 font-bold mt-1" >Nombre:
                                         <input class=" text-black py-1 px-5 font-bold mt-5" type="text" name="nombre" size="40" placeholder="Escriba su nombre" ></p>
-                                        <p class=" text-black py-2 px-4 font-bold mt-2 izquierda"  >Teléfono: 
+                                        <p class=" text-black py-2 px-4 font-bold mt-2 izquierda"  >Teléfono:
                                         <input class=" text-black py-1 px-4 font-bold mt-3" type="text" name="telefono"size="40" placeholder="Escriba sus 10 dígitos de su teléfono"></p>
                                         <div class="ContenedorCedula">
-                                        <p class=" text-black py-2 px-4 font-bold mt-5 izquierda" >Cédula o Pasaporte: 
+                                        <p class=" text-black py-2 px-4 font-bold mt-5 izquierda" >Cédula o Pasaporte:
                                         </p> <select name="menu">
                                         <option class=" text-black py-2 px-4 font-bold mt-5" >Cédula</option>
                                         <option class=" text-black py-2 px-4 font-bold mt-5">Pasaporte</option>
                                         </select>
                                         </div>
-                                        <p class=" text-black py-2 px-4 font-bold mt-1 izquierda" >Escribe los dígitos: 
+                                        <p class=" text-black py-2 px-4 font-bold mt-1 izquierda" >Escribe los dígitos:
                                         <input class=" text-black py-1 px-4 font-bold mt-5" type="text" name="cedula"  size="32" placeholder="Escriba sus 10 dígitos de su cédula/pasaporte"></p>
-                                        <p class=" text-black py-2 px-4 font-bold mt-5 izquierda" >Sexo:  
+                                        <p class=" text-black py-2 px-4 font-bold mt-5 izquierda" >Sexo:
                                         <input type="radio" name="hm" value="h" class=" text-white py-2 px-4 font-bold "> Hombre
                                         <input type="radio" name="hm" value="m" > Mujer
                                     </p>
-                                    
-                                    <button type= "submit" class="bg-blue-500 hover:bg-green-600 text-white py-2 px-4 font-bold rounded mt-10"> 
-                                        Enviar
+
+                                    <button type= "submit" class="bg-blue-500 hover:bg-green-600 text-white py-2 px-4 font-bold rounded mt-10">
+                                        <a href="mas_cursos">
+                                            Enviar
+                                        </a>
                                     </button>
-                                    <button type= "reset" class="bg-blue-500 hover:bg-red-600 text-white py-2 px-4 font-bold rounded " > 
+
+                                    <button type= "reset" class="bg-blue-500 hover:bg-red-600 text-white py-2 px-4 font-bold rounded " >
                                         Limpiar
                                     </button>
-                                    
-                                    
+
+
                             </form>
                             </div>
 
-               
+
 
                     <div class="ml-4 text-center text-sm text-gray-500 sm:text-left sm:ml-0 centrar pt-5">
                         Todos los derechos reservados @ESQUEL
