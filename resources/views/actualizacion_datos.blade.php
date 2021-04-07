@@ -61,7 +61,7 @@
 
         <div class="text-left mb-8">
             <button type="submit" class="ml-20 mt-5 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-xl font- rounded-xl text-black bg-grey-200 hover:bg-grey-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Guardar
+            <a href="cursos_recibidos">Guardar</a>
             </button>
         </div>
         <div >

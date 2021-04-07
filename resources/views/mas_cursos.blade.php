@@ -9,7 +9,6 @@
     <title>Cursos para Ti</title>
 </head>
 
-
 <style>
     #General {
         border: 3px solid black;
@@ -21,7 +20,6 @@
         height: 900px;
     }
 </style>
-
 
 <body>
 
@@ -69,7 +67,7 @@
 
     <!--titutlo-->
     <div class=" text-center pb-10 pt-10 ">
-        <h1 class="font-bold text-green-500 break-normal text-3xl md:text-5xl">Mas Cursos Para TI</h1>
+        <h1 class="font-bold text-green-500 break-normal text-3xl md:text-5xl">Mas Cursos Para Ti</h1>
     </div>
     <!--tabla-->
     <div id="General" class="container mx-auto bg-green-500 rounded p-8 text-center overflow-y-auto ">
@@ -131,7 +129,5 @@
         </ul>
     </footer>
     </div>
-
 </body>
-
 </html>

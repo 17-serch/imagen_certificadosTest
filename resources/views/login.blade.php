@@ -42,7 +42,7 @@
 
                     <div class="text-center text-sm text-gray-700 mt-3">
                     <button class="bg-blue hover:bg-blue-dark text-gray-700 font-bold py-2 px-4 rounded text-2xl">
-                        Ingresar  
+                        <a href="actualizacion_datos">Ingresar</a>
                     </button>
                     </div>
                 </div>
