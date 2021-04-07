@@ -28,8 +28,8 @@ Route::get('actualizacion_datos/', function () {
     return view('actualizacion_datos');
 });
 
-Route::get('cursos_recividos/', function () {
-    return view('cursos_recividos');
+Route::get('cursos_recibidos/', function () {
+    return view('cursos_recibidos');
 });
 
 Route::get('formulario/', function () {

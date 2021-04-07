@@ -32,21 +32,21 @@
             <div class="md:flex w-9/12 max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
                 <div class="p-8">
                     <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Nombres</h1>
-                    <input type="text" class="mt-5 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="Lucia Mary">
+                    <input type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="Lucia Mary">
                 </div>
             </div>
                     
             <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
                 <div class="p-8 ">
                     <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Apellidos</h1>
-                    <input type="text" class="mt-5 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="Garcia Perez">
+                    <input type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="Garcia Perez">
                 </div>
             </div>
                 
             <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
                 <div class="p-8">
                     <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Celular</h1>
-                    <input type="text" class="mt-5 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="0987532156">
+                    <input type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="0987532156">
                 </div>
             </div>
             
@@ -54,7 +54,7 @@
             <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
                 <div class="p-8">
                     <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Cédula o pasaporte</h1>
-                    <input type="text" class="mt-5 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="1254896352">
+                    <input type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="1254896352">
                 </div>
             </div>
         </div>
