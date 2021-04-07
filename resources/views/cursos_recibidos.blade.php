@@ -31,10 +31,10 @@
                     </svg>
                 </button>
             </div>
-            <div id='menu' class="w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden">
+            <div id='menu' class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden">
                 <div class="text-sm lg:flex-grow">
-                    <a href="mas_cursos" class=" px-4 py-2 text-white rounded hover:text-green-100
-                      hover:bg-white text-xl font-semibold  ">
+                    <a href="mas_cursos" class=" px-4 py-2 text-green-300 rounded hover:text-green-100
+                      hover:bg-white text-xl font-semibold">
                         Cursos Para ti
                     </a>
                 </div>
@@ -80,17 +80,17 @@
                 <tr class="border-collapse border border-grey-100 ">
                     <td class="p-3">Intro to CSS</td>
                     <td class="p-3">Adam</td>
-                    <td class="p-3">858</td>
+                    <td class="p-3"><a href="#">858</a></td>
                 </tr>
                 <tr>
                     <td class="p-3">A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
                     <td class="p-3">Adam</td>
-                    <td class="p-3">112</td>
+                    <td class="p-3"><a href="#">112</a></td>
                 </tr>
                 <tr class="border-collapse border border-grey-100 ">
                     <td class="p-3">Intro to JavaScript</td>
                     <td class="p-3">Chris</td>
-                    <td class="p-3">1,280</td>
+                    <td class="p-3"><a href="#">1,280</a></td>
                 </tr>
                 <tr class="border-collapse border border-grey-100 ">
                     <td class="p-3">Intro to JavaScript</td>
@@ -101,9 +101,9 @@
         </table>
     </div>
     <!--======= footer =========-->
-    <div class=" bg-white shadow shadow">
+    <div class=" bg-white shadow">
             <div class="text-right text-green-300 shadow font-sans text-lg">
-                <div class="flex justify-end  hover:text-white 
+                <div class="flex justify-end  hover:text-green-300 
                       hover:bg-grey-100">
                 <ul>
                 <h3 class="font-bold">CONTÁCTANOS</h3>
@@ -113,7 +113,6 @@
                 <li>+(5932) 252-0001</li>
                 </ul>
                 </div>
-                
             </div>
         </div>
     <footer class=" bg-black shadow">
