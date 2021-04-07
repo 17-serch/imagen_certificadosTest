@@ -51,7 +51,7 @@
                     </div>
                     <div class="hidden sm:block sm:m-8">
                         <div class="flex space-x-4">
-                            <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Certificados</a>
+                            <a href="cursos_recibidos" class=" px-4 py-2 text-white rounded hover:text-green-100 hover:bg-white text-xl font-semibold ">Certificados</a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
         <!-- Menú móvil, mostrar / ocultar según el estado del menú. -->
         <div class="sm:hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Certificados</a>
+                <a href="cursos_recibidos" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Certificados</a>
             </div>
         </div>
     </nav>
@@ -108,7 +108,30 @@
             </tbody>
         </table>
     </div>
-   
-   
+    <!--======= footer =========-->
+    <div class=" bg-white shadow shadow">
+        <div class="text-right text-green-300 shadow font-sans text-lg">
+            <div class="flex justify-end  hover:text-white 
+                      hover:bg-green-200">
+                <ul>
+                    <h3 class="font-bold">CONTÁCTANOS</h3>
+                    <li>Av. Colón E4-175 entre Amazonas y Foch, Ed.</li>
+                    <li>Torres de la Colón, Mezzanine Of. 12 Quito - Ecuador</li>
+                    <li>fundacion@esquel.org.ec</li>
+                    <li>+(5932) 252-0001</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <footer class=" bg-green-200 shadow">
+        <ul class="p-0 py-2 border border-t-2 border-green-200 border-b-0 border-l-0 border-r-0 grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-0 md:gap-y-0">
+            <li class="xl:py-0 lg:py-0 md:py-5 sm:py-5 py-2 text-center "><a href="#">© 2021 Fundación Esquel</a></li>
+
+        </ul>
+    </footer>
+    </div>
+
 </body>
+
 </html>
