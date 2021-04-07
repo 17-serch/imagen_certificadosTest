@@ -10,7 +10,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/app.css')}}">
         
-    </head>
 <body class="bg-grey-100 grid grid-rows-1">
 	<div class="bg-grey-lighter min-h-screen flex flex-col">
             <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
@@ -47,13 +46,25 @@
                     </button>
                     </div>
                 </div>
-
-                <div class="text-gray-900 mt-6">
+                <div class="text-gray-900 mt-3 h-12">
                     <a href="crear_cuenta" class="no-underline border-b border-blue-500 text-black">
                         Crear cuenta
                     </a>.
                 </div>
+
+            <div id="fb-root "></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v10.0&appId=490217198832630&autoLogAppEvents=1" nonce="80oQupWo"></script>
+            <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
             </div>
+
+            <button class="w-60 h-10 bg-red-500 rounder self-center align-items float-right -mt-11 ml-2  text-white ext-base tracking-wider font-sans" >
+               <div class="absolute -mt-2  -ml-3 w-10 h-10 rounded bg-white ">
+               <img class="absolute mt-3 ml-3 w-5 h-5  " src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+               </div>
+            <b>Continuar con Google</b></p>
+            </button>
+         </div>
+      </div>
     </div>
 </body>
 </html>
