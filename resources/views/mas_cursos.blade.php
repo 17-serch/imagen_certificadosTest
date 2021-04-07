@@ -78,7 +78,7 @@
         <h1 class="font-bold text-green-100 break-normal text-3xl md:text-5xl">Mas Cursos Para TI</h1>
     </div>
     <!--tabla-->
-    <div id="General" class="container mx-auto bg-green-200 rounded p-8 text-center overflow-y-auto ">
+    <div id="General" class="container mx-auto bg-green-200 rounded p-8 text-center overflow-y-auto">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
@@ -114,15 +114,14 @@
             </tbody>
         </table>
     </div>
-</body>
 
     <!--======= footer =========-->
-<footer class="footer bg-green-200 relative pt-1 border-b-2 border-blue-700">
+    <footer class="mt-64 footer bg-green-200 relative pt-1 border-b-2 border-blue-700">
     <div class="container mx-auto p-6">
         <div class="sm:flex sm:mt-8">
             <div class="mt-8 sm:mt-0 sm:w-full sm:px-8 flex flex-col md:flex-row justify-between">
                 <div class="flex flex-col">
-
+    
                     <!--======= Redes sociales =========-->
                     <span class="font-bold text-center text-gray-700 uppercase mb-2">Area Social</span>
                     <span class="my-2"><a href="https://www.facebook.com/fundacion.esquel/" class="text-blue-700  text-md hover:text-blue-500">Siguenos en Facebook</a></span>
@@ -130,7 +129,7 @@
                     <span class="my-2"><a href="https://www.youtube.com/channel/UCS7JrWLBuGoJqhE7ZzNr3Og" class="text-blue-700  text-md hover:text-blue-500">Visítanos en Youtube</a></span>
                 </div>
                 <div class="flex flex-col">
-
+    
                     <!--======= Contactos =========-->
                     <span class="font-bold text-center text-gray-700 uppercase mt-4 md:mt-0 mb-2">Contáctanos</span>
                         <div class="text-right text-white">
@@ -150,5 +149,7 @@
             </div>
         </div>
     </div>
-</footer>
+    </footer>
+
+</body>
 </html>
