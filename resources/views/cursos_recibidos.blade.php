@@ -80,17 +80,17 @@
                 <tr class="border-collapse border border-grey-100 ">
                     <td class="p-3">Intro to CSS</td>
                     <td class="p-3">Adam</td>
-                    <td class="p-3"><a href="#">858</a></td>
+                    <td class="p-3"><a href="formulario">858</a></td>
                 </tr>
                 <tr>
                     <td class="p-3">A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
                     <td class="p-3">Adam</td>
-                    <td class="p-3"><a href="#">112</a></td>
+                    <td class="p-3"><a href="formulario">112</a></td>
                 </tr>
                 <tr class="border-collapse border border-grey-100 ">
                     <td class="p-3">Intro to JavaScript</td>
                     <td class="p-3">Chris</td>
-                    <td class="p-3"><a href="#">1,280</a></td>
+                    <td class="p-3"><a href="formulario">1,280</a></td>
                 </tr>
                 <tr class="border-collapse border border-grey-100 ">
                     <td class="p-3">Intro to JavaScript</td>
