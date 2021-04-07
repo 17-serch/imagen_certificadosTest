@@ -33,7 +33,7 @@
             <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
                 <div class="p-8 ">
                     <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Nombre Curso</h1>
-                    <input type="text" class="mt-5 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="Programacion New">
+                    <input type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="Programacion New">
                 </div>
             </div>
                 
@@ -41,7 +41,7 @@
                 <div class="p-8">
                     <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Horas del Curso</h1>
                     <div class="relative">
-                        <select class="mt-5 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md">
+                        <select class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md">
                             <option>30</option>
                             <option>50</option>
                             <option>80</option>
@@ -68,7 +68,7 @@
             <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
                 <div class="p-8">
                     <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Subir Imagenes</h1>
-                    <input class="rounded" type="file" name="Imagenes_certificados" id="Imagenes_certificados">
+                    <input class="mt-5 rounded" type="file" name="Imagenes_certificados" id="Imagenes_certificados">
                 </div>
             </div>
 
