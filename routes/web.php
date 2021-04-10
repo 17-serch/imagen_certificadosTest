@@ -27,40 +27,41 @@ use App\Http\Controllers\SocialController;
 */
 
 
-// Route::get('/', function () {
-//     return view('login');
-// });
-// Route::get('login/', function () {
-//     return view('login');
-// });
 
-// Route::get('crear_cuenta/', function () {
-//     return view('crear_cuenta');
-// });
+Route::get('/', function () {
+    return view('auth/login');
+});
+Route::get('login/', function () {
+    return view('auth/login');
+});
 
-// Route::get('actualizacion_datos/', function () {
-//     return view('actualizacion_datos');
-// });
+Route::get('crear_cuenta/', function () {
+    return view('crear_cuenta');
+});
+
+Route::get('actualizacion_datos/', function () {
+    return view('actualizacion_datos');
+});
 
 Route::get('cursos_recibidos/', function () {
     return view('cursos_recibidos');
 });
 
-// Route::get('formulario/', function () {
-//     return view('formulario');
-// });
+Route::get('formulario/', function () {
+    return view('formulario');
+});
 
-// Route::get('mas_cursos/', function () {
-//     return view('mas_cursos');
-// });
+Route::get('mas_cursos/', function () {
+    return view('mas_cursos');
+});
 
-// Route::get('nuevos_cursos/', function () {
-//     return view('nuevos_cursos');
-// });
+Route::get('nuevos_cursos/', function () {
+    return view('nuevos_cursos');
+});
 
-// Route::get('subir_certificados/', function () {
-//     return view('subir_certificados');
-// });
+Route::get('subir_certificados/', function () {
+    return view('subir_certificados');
+});
 
 
 

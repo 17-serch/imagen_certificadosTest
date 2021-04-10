@@ -59,7 +59,7 @@
 
 
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -107,29 +107,34 @@
                     </a>.
                 </div>
 
+ 
+
                 {{-- Login with Facebook --}}
-                <div class="flex items-center justify-end mt-4">
-                    <a class="btn" href="{{ url('auth/facebook') }}"
-                        style="background: #3B5499; color: #ffffff; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;">
-                        Login with Facebook
+                <div class="mt-4 text-center p-3 w-full">
+                    <a class="grid grid-cols-8 grid-rows-1" href="{{ url('auth/facebook') }}">
+                        <div class="py-2 col-start-1 col-end-2">
+                            <img class="absolute w-ful h-6" src="https://cdn.icon-icons.com/icons2/2108/PNG/512/facebook_icon_130940.png"/>
+                        </div>
+                        <p class="bg-blue-100 text-white py-2 rounded col-start-2 col-end-10">Login with facebook</p>
                     </a>
+                    <!-- style="background: #d11818; color: #ffffff; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;" -->
                 </div>
 
 
                 {{-- Login with Facebook --}}
-                <div class="flex items-center justify-end mt-4">
-                    <a class="btn" href="{{ url('auth/google') }}"
-                        style="background: #d11818; color: #ffffff; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;">
-                        Login with google
+                <div class="mt-4 text-center p-3 w-full">
+                    <a class="grid grid-cols-8 grid-rows-1" href="{{ url('auth/google') }}">
+                        <div class="py-2 col-start-1 col-end-2">
+                            <img class="absolute w-ful h-6" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                        </div>
+                        <p class="bg-red-100 text-white py-2 rounded col-start-2 col-end-10">Login with google</p>
                     </a>
+                    <!-- style="background: #d11818; color: #ffffff; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;" -->
                 </div>
-
 
             </form>
         </div>
      </div>
 
-
-    
 </body>
 </html>

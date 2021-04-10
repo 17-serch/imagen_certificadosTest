@@ -118,7 +118,6 @@
     <footer class=" bg-black shadow">
         <ul class="p-0 py-2 border border-t-2 border-grey-100 border-b-0 border-l-0 border-r-0 grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-0 md:gap-y-0">
             <li class="xl:py-0 lg:py-0 md:py-5 sm:py-5 py-2 text-center text-white "><a href="#">© 2021 Fundación Esquel</a></li>
-            
         </ul>
     </footer>
     </div>
