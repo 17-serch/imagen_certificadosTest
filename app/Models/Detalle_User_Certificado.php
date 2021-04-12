@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Detalle_User_Certificado extends Model
 {
     use HasFactory;
+
+    public function curso_aprobado(){
+        return $this->belongsTo('App\Models\Curso_Aprobado');
+    }
 }

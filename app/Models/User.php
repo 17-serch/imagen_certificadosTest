@@ -17,6 +17,17 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    
+    public function rol(){
+        return $this->belongsTo('App\Models\Rol');
+    }
+    public function certificados(){
+        return $this->belongsToMany('App\Models\Certicado');
+    }
+
+
+
+
 
     /**
      * The attributes that are mass assignable.
