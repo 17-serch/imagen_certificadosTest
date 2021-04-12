@@ -49,13 +49,13 @@
                         type="password"
                         class="block border border-green-900 w-full p-3 rounded mb-4 text-blue-800"
                         name="password"
-                        placeholder=""/>
-
-                    <a href="#">   
+                        placeholder=""/>   
                     
                     <div class="text-center text-sm text-gray-700 mt-3">
                     <button class="bg-blue hover:bg-blue-dark text-gray-700 font-bold py-2 px-4 rounded text-2xl">
-                    Crear
+                    
+                    <a href="actualizacion_datos">Crear</a>
+                    <!-- cursos_recibidos -->
                     </button>
                     </div>
                         
