@@ -30,8 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'facebook' => [
-        'client_id' => '744269579598338',
-        'client_secret' => '761f4d5c04eb2578fc34afa8b36bfedc',
+        'client_id' => '490217198832630',
+        'client_secret' => '4c17311f1b3b711e68f919455b0e84f4',
         'redirect' => 'http://localhost:8000/cursos_recibidos',
     ],
     'google' => [
