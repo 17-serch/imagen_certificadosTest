@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Curso_Nuevo;
+use App\Models\User;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\CursoNuevoResource;
 class CursoNuevoController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class CursoNuevoController extends Controller
      */
     public function index()
     {
-        //
+        $cursosNuevo=Curso_Nuevo::all();
+        return $cursosNuevo;
     }
 
     /**
@@ -35,7 +37,13 @@ class CursoNuevoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cursosNuevo=new Curso_Nuevo();
+        $cursosNuevo->nombre=$request->nombre;
+        $cursosNuevo->horas=$request->horas;
+        $cursosNuevo->información=$request->información;
+        if($cursosNuevo->save()){
+            return new CursoNuevoResource($cursosNuevo);
+        }
     }
 
     /**
@@ -44,9 +52,10 @@ class CursoNuevoController extends Controller
      * @param  \App\Models\Curso_Nuevo  $curso_Nuevo
      * @return \Illuminate\Http\Response
      */
-    public function show(Curso_Nuevo $curso_Nuevo)
+    public function show($id)
     {
-        //
+        $cursosNuevo=Curso_Nuevo::findOrFail($id);
+        return new  CursoNuevoResource($cursosNuevo);
     }
 
     /**
@@ -55,9 +64,10 @@ class CursoNuevoController extends Controller
      * @param  \App\Models\Curso_Nuevo  $curso_Nuevo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Curso_Nuevo $curso_Nuevo)
+    public function edit($id)
     {
-        //
+        $cursosNuevo=Curso_Nuevo::find($id);
+        return $cursosNuevo;
     }
 
     /**
@@ -67,9 +77,15 @@ class CursoNuevoController extends Controller
      * @param  \App\Models\Curso_Nuevo  $curso_Nuevo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Curso_Nuevo $curso_Nuevo)
+    public function update(Request $request,$id)
     {
-        //
+        $cursosNuevo= Curso_Nuevo::findOrFail($id);
+        $cursosNuevo->nombre=$request->nombre;
+        $cursosNuevo->horas=$request->horas;
+        $cursosNuevo->información=$request->información;
+        if($cursosNuevo->save()){
+            return new CursoNuevoResource($cursosNuevo);
+        }
     }
 
     /**
@@ -78,8 +94,12 @@ class CursoNuevoController extends Controller
      * @param  \App\Models\Curso_Nuevo  $curso_Nuevo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Curso_Nuevo $curso_Nuevo)
+    public function destroy($id)
     {
-        //
+        $cursosNuevo=Curso_Nuevo::findOrFail($id); 
+        if($cursosNuevo->delete()){
+            return new CursoNuevoResource($cursosNuevo);
+        }
+
     }
 }

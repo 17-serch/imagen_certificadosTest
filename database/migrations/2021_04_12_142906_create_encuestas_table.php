@@ -15,7 +15,7 @@ class CreateEncuestasTable extends Migration
     {
         Schema::create('encuestas', function (Blueprint $table) {
             $table->id();
-            $table->string('Link');
+            $table->string('link');
             $table->string('encuesta_Realizada');
             $table->timestamps();
         });

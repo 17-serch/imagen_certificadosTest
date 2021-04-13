@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Encuesta;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\EncuestaResource;
 class EncuestaController extends Controller
 {
     /**
@@ -14,7 +14,11 @@ class EncuestaController extends Controller
      */
     public function index()
     {
-        //
+        //Mostrar
+        //all trae todos los registros
+
+        $encuesta=Encuesta::all();
+        return $encuesta;
     }
 
     /**
@@ -35,7 +39,14 @@ class EncuestaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Crear
+
+        $encuesta=new Encuesta();
+        $encuesta->link=$request->link;
+        $encuesta->encuesta_Realizada=$request->encuesta_Realizada;
+        if($encuesta->save()){
+            return new EncuestaResource($encuesta);
+        }
     }
 
     /**
@@ -44,9 +55,13 @@ class EncuestaController extends Controller
      * @param  \App\Models\Encuesta  $encuesta
      * @return \Illuminate\Http\Response
      */
-    public function show(Encuesta $encuesta)
+    public function show($id)
     {
-        //
+        //Editar
+        //Capturar datos del registro que quiero editar 
+
+        $encuesta=Encuesta::findOrFail($id);
+        return new EncuestaResource($encuesta);
     }
 
     /**
@@ -55,9 +70,13 @@ class EncuestaController extends Controller
      * @param  \App\Models\Encuesta  $encuesta
      * @return \Illuminate\Http\Response
      */
-    public function edit(Encuesta $encuesta)
+    public function edit($id)
     {
-        //
+        //Editar raro
+        //Capturar datos del registro que quiero editar 
+
+        $encuesta=Encuesta::find($id);
+        return $encuesta;
     }
 
     /**
@@ -67,9 +86,17 @@ class EncuestaController extends Controller
      * @param  \App\Models\Encuesta  $encuesta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Encuesta $encuesta)
+    public function update(Request $request,$id)
     {
-        //
+        //Recien me hace el cambio
+
+        $encuesta=Encuesta::findOrFail($id);
+        $encuesta->link=$request->link;
+        $encuesta->encuesta_Realizada=$request->encuesta_Realizada;
+        if($encuesta->save()){
+            return new EncuestaResource($encuesta);
+        }
+
     }
 
     /**
@@ -78,8 +105,14 @@ class EncuestaController extends Controller
      * @param  \App\Models\Encuesta  $encuesta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Encuesta $encuesta)
+    public function destroy($id)
     {
-        //
+        //Elimina
+        $encuesta=Encuesta::findOrFail($id); 
+        if($encuesta->delete()){
+            return new EncuestaResource($encuesta);
+        }
+
+
     }
 }

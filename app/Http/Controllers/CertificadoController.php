@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Certificado;
 use Illuminate\Http\Request;
+use App\Http\Resources\CertificadoResource;
+
 
 class CertificadoController extends Controller
 {
@@ -14,7 +16,8 @@ class CertificadoController extends Controller
      */
     public function index()
     {
-        //
+       $certificado=Certificado::all();
+       return $certificado;
     }
 
     /**
@@ -35,7 +38,12 @@ class CertificadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $certificado=new Certificado();
+        $certificado->nombre=$request->nombre;
+        $certificado->fecha=$request->fecha;
+        if($certificado->save()){
+            return new CertificadoResource($certificado);
+        }
     }
 
     /**
@@ -44,9 +52,10 @@ class CertificadoController extends Controller
      * @param  \App\Models\Certificado  $certificado
      * @return \Illuminate\Http\Response
      */
-    public function show(Certificado $certificado)
+    public function show($id)
     {
-        //
+        $certificado=Certificado::findOrFail($id);
+        return new CertificadoResource($certificado);
     }
 
     /**
@@ -55,9 +64,10 @@ class CertificadoController extends Controller
      * @param  \App\Models\Certificado  $certificado
      * @return \Illuminate\Http\Response
      */
-    public function edit(Certificado $certificado)
+    public function edit($id)
     {
-        //
+        $certificado=Certificado::find($id);
+        return $certificado;
     }
 
     /**
@@ -67,9 +77,14 @@ class CertificadoController extends Controller
      * @param  \App\Models\Certificado  $certificado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Certificado $certificado)
+    public function update(Request $request, $id)
     {
-        //
+        $certificado=Certificado::findOrFail($id);
+        $certificado->nombre=$request->nombre;
+        $certificado->fecha=$request->fecha;
+        if($certificado->save()){
+            return new CertificadoResource($certificado);
+        }
     }
 
     /**
@@ -78,8 +93,11 @@ class CertificadoController extends Controller
      * @param  \App\Models\Certificado  $certificado
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Certificado $certificado)
+    public function destroy($id)
     {
-        //
+        $certificado=Certificado::findOrFail($id);
+        if($certificado->delete()){
+            return new CertificadoResource($certificado);
+        }
     }
 }

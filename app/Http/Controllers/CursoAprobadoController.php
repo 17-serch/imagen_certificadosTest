@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Curso_Aprobado;
 use Illuminate\Http\Request;
+use App\Http\Resources\CursoAprobadoResource;
 
 class CursoAprobadoController extends Controller
 {
@@ -14,7 +15,8 @@ class CursoAprobadoController extends Controller
      */
     public function index()
     {
-        //
+        $cursoAprobado=Curso_Aprobado::all();
+        return $cursoAprobado;
     }
 
     /**
@@ -35,7 +37,15 @@ class CursoAprobadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cursoAprobado=new Curso_Aprobado();
+        $cursoAprobado->nombre=$request->nombre;
+        $cursoAprobado->horas=$request->horas;
+        $cursoAprobado->id_encuesta=$request->id_encuesta;
+        $cursoAprobado->id_detalle=$request->id_detalle;
+        if($cursoAprobado->save()){
+            return new CursoAprobadoResource($cursoAprobado);
+        }
+
     }
 
     /**
@@ -44,9 +54,10 @@ class CursoAprobadoController extends Controller
      * @param  \App\Models\Curso_Aprobado  $curso_Aprobado
      * @return \Illuminate\Http\Response
      */
-    public function show(Curso_Aprobado $curso_Aprobado)
+    public function show($id)
     {
-        //
+        $cursoAprobado=Curso_Aprobado::findOrFail($id);
+        return new CursoAprobadoResource($cursoAprobado);
     }
 
     /**
@@ -55,9 +66,10 @@ class CursoAprobadoController extends Controller
      * @param  \App\Models\Curso_Aprobado  $curso_Aprobado
      * @return \Illuminate\Http\Response
      */
-    public function edit(Curso_Aprobado $curso_Aprobado)
+    public function edit($id)
     {
-        //
+        $cursoAprobado=Curso_Aprobado::find($id);
+        return $cursoAprobado;
     }
 
     /**
@@ -67,9 +79,16 @@ class CursoAprobadoController extends Controller
      * @param  \App\Models\Curso_Aprobado  $curso_Aprobado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Curso_Aprobado $curso_Aprobado)
+    public function update(Request $request, $id)
     {
-        //
+        $cursoAprobado=Curso_Aprobado::find($id);
+        $cursoAprobado->nombre=$request->nombre;
+        $cursoAprobado->horas=$request->horas;
+        $cursoAprobado->id_encuesta=$request->id_encuesta;
+        $cursoAprobado->id_detalle=$request->id_detalle;
+        if($cursoAprobado->save()){
+            return new CursoAprobadoResource($cursoAprobado);
+        }
     }
 
     /**
@@ -78,8 +97,11 @@ class CursoAprobadoController extends Controller
      * @param  \App\Models\Curso_Aprobado  $curso_Aprobado
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Curso_Aprobado $curso_Aprobado)
+    public function destroy($id)
     {
-        //
+        $cursoAprobado=Curso_Aprobado::find($id);
+        if($cursoAprobado->save()){
+            return new CursoAprobadoResource($cursoAprobado);
+        }
     }
 }

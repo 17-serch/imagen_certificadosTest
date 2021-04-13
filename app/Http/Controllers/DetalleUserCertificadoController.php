@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Detalle_User_Certificado;
 use Illuminate\Http\Request;
+use App\Http\Resources\DetalleUserCertificadoControllerResource;
 
 class DetalleUserCertificadoController extends Controller
 {
@@ -14,7 +15,8 @@ class DetalleUserCertificadoController extends Controller
      */
     public function index()
     {
-        //
+        $detalle=Detalle_User_Certificado::all();
+        return $detalle;
     }
 
     /**
@@ -35,7 +37,12 @@ class DetalleUserCertificadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $detalle=new Detalle_User_Certificado();
+        $detalle->id_usuarios=$request->id_usuarios;
+        $detalle->id_certificado=$request->id_certificado;
+        if($detalle->save()){
+            return new DetalleUserCertificadoControllerResource($detalle);
+        }
     }
 
     /**
@@ -44,9 +51,10 @@ class DetalleUserCertificadoController extends Controller
      * @param  \App\Models\Detalle_User_Certificado  $detalle_User_Certificado
      * @return \Illuminate\Http\Response
      */
-    public function show(Detalle_User_Certificado $detalle_User_Certificado)
+    public function show($id)
     {
-        //
+        $detalle=Detalle_User_Certificado::findOrFail($id);
+        return new DetalleUserCertificadoControllerResource($detalle);
     }
 
     /**
@@ -55,9 +63,10 @@ class DetalleUserCertificadoController extends Controller
      * @param  \App\Models\Detalle_User_Certificado  $detalle_User_Certificado
      * @return \Illuminate\Http\Response
      */
-    public function edit(Detalle_User_Certificado $detalle_User_Certificado)
-    {
-        //
+    public function edit($id)
+    { 
+        $detalle=Detalle_User_Certificado::find($id);
+        return new DetalleUserCertificadoControllerResource($detalle);
     }
 
     /**
@@ -67,9 +76,14 @@ class DetalleUserCertificadoController extends Controller
      * @param  \App\Models\Detalle_User_Certificado  $detalle_User_Certificado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Detalle_User_Certificado $detalle_User_Certificado)
+    public function update(Request $request, $id)
     {
-        //
+        $detalle=Detalle_User_Certificado::findOrFail($id);
+        $detalle->id_usuarios=$request->id_usuarios;
+        $detalle->id_certificado=$request->id_certificado;
+        if($detalle->save()){
+            return new DetalleUserCertificadoControllerResource($detalle);
+        }
     }
 
     /**
@@ -78,8 +92,11 @@ class DetalleUserCertificadoController extends Controller
      * @param  \App\Models\Detalle_User_Certificado  $detalle_User_Certificado
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Detalle_User_Certificado $detalle_User_Certificado)
+    public function destroy($id)
     {
-        //
+        $detalle=Detalle_User_Certificado::findOrFail($id);
+        if($detalle->delete()){
+            return new DetalleUserCertificadoControllerResource($detalle);
+        }
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rol;
 use Illuminate\Http\Request;
+use App\Http\Resources\RolResource;
 
 class RolController extends Controller
 {
@@ -14,7 +15,8 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        $rols=Rol::all();
+        return $rols;
     }
 
     /**
@@ -35,7 +37,12 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rols=new Rol();
+        $rols->nombre=$request->nombre;
+        $rols->descripción=$request->descripción;
+        if($rols->save()){
+            return new RolResource($rols);
+        }
     }
 
     /**
@@ -44,9 +51,10 @@ class RolController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function show(Rol $rol)
+    public function show($id)
     {
-        //
+        $rols=Rol::findOrFail($id);
+        return new RolResource($rols);
     }
 
     /**
@@ -55,9 +63,10 @@ class RolController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rol $rol)
+    public function edit($id)
     {
-        //
+        $rols=Rol::find($id);
+        return $rols;
     }
 
     /**
@@ -67,9 +76,14 @@ class RolController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rol $rol)
+    public function update(Request $request,$id)
     {
-        //
+        $rols=Rol::findOrFail($id);
+        $rols->nombre=$request->nombre;
+        $rols->descripción=$request->descripción;
+        if($rols->save()){
+            return new RolResource($rols);
+        }
     }
 
     /**
@@ -78,8 +92,11 @@ class RolController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rol $rol)
+    public function destroy($id)
     {
-        //
+        $rols=Rol::findOrFail($id);
+        if($rols->delete()){
+            return new RolResource($rols);
+        }
     }
 }
