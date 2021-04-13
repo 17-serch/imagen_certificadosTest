@@ -68,8 +68,8 @@ Route::put('/certificados/{id}',[CertificadoController::class, 'update']);
 Route::delete('/certificados/{id}',[CertificadoController::class, 'destroy']);
 
 //APIS User
-Route::get('/user',[UserController::class, 'index']);
-Route::post('/user/create',[UserController::class, 'store']);
-Route::get('/user/{id}',[UserController::class, 'edit']);
-Route::put('/user/{id}',[UserController::class, 'update']);
-Route::delete('/user/{id}',[UserController::class, 'destroy']);
+Route::get('/users',[UserController::class, 'index']);
+Route::post('/users/create',[UserController::class, 'store']);
+Route::get('/users/{id}',[UserController::class, 'edit']);
+Route::put('/users/{id}',[UserController::class, 'update']);
+Route::delete('/users/{id}',[UserController::class, 'destroy']);
