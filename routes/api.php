@@ -8,6 +8,7 @@ use App\Http\Controllers\DetalleUserCertificadoController;
 use App\Http\Controllers\CursoNuevoController;
 use App\Http\Controllers\CursoAprobadoController;
 use App\Http\Controllers\CertificadoController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,6 +23,7 @@ use App\Http\Controllers\CertificadoController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 
 //APIS Encuesta
 Route::get('/encuestas',[EncuestaController::class, 'index']);
@@ -64,3 +66,10 @@ Route::post('/certificados/create',[CertificadoController::class, 'store']);
 Route::get('/certificados/{id}',[CertificadoController::class, 'edit']);
 Route::put('/certificados/{id}',[CertificadoController::class, 'update']);
 Route::delete('/certificados/{id}',[CertificadoController::class, 'destroy']);
+
+//APIS User
+Route::get('/user',[UserController::class, 'index']);
+Route::post('/user/create',[UserController::class, 'store']);
+Route::get('/user/{id}',[UserController::class, 'edit']);
+Route::put('/user/{id}',[UserController::class, 'update']);
+Route::delete('/user/{id}',[UserController::class, 'destroy']);

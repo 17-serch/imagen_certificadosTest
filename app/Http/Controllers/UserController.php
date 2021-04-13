@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
@@ -13,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user=User::all();
+        return $user;
     }
 
     /**
@@ -34,7 +37,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user=new User();
+        $user->name=$request->name;
+        $user->apellido=$request->apellido;
+        $user->telefono=$request->telefono;
+        $user->genero=$request->genero;
+        $user->email=$request->email;
+        $user->email_verified_at=$request->email_verified_at;
+        $user->password=$request->password;
+        $user->current_team_id=$request->current_team_id;
+        $user->profile_photo_path=$request->profile_photo_path;
+        $user->id_roles=$request->id_roles;
+        if($user->save()){
+            return new UserResource($user);
+        }
     }
 
     /**
@@ -44,8 +60,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {    
+        $user=User::findf0rFail($id);
+        return new UserResource($user);
     }
 
     /**
@@ -56,7 +73,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=User::find($id);
+        return $user;   
     }
 
     /**
@@ -68,7 +86,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=User::findOrFail($id);
+        $user->name=$request->name;
+        $user->apellido=$request->apellido;
+        $user->telefono=$request->telefono;
+        $user->genero=$request->genero;
+        $user->email=$request->email;
+        $user->email_verified_at=$request->email_verified_at;
+        $user->password=$request->password;
+        $user->current_team_id=$request->current_team_id;
+        $user->profile_photo_path=$request->profile_photo_path;
+        $user->id_roles=$request->id_roles;
+        if($user->save()){
+            return new UserResource($user);
+        }
     }
 
     /**
@@ -79,6 +110,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        if($user->delete()){
+            return new UserResource($user);
+        }
     }
 }
