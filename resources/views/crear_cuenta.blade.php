@@ -29,13 +29,13 @@
                 <img src="https://www.gobiernoabierto.ec/wp-content/uploads/2020/01/Logo-Esquel-color.png" alt="logo" class="fill-current h-100 w-100 mr-2" width="250" height="250">
 
                 <label class="uppercase tracking-wide text-black font-serif mb-10 w-50 text-xl"
-                    for="usuario"> Usuario 
+                    for="usuario"> Email 
                 </label>
                 
                 <input 
                     type="text"
                     class="block border border-green-900  w-full p-3 rounded mb-4 text-blue-800"
-                    name="name"
+                    name="email"
                     placeholder=""/>
 
                 <label class="uppercase tracking-wide text-black font-serif mb-10 w-50 text-xl" 

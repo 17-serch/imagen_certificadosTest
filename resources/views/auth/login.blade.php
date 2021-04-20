@@ -24,10 +24,10 @@
                 <h1 class="mb-12 text-5xl text-center font-serif md:georgia text-black">Login</h1>
                 <img src="https://www.gobiernoabierto.ec/wp-content/uploads/2020/01/Logo-Esquel-color.png" alt="logo" class="fill-current  h-100 w-100 mr-2 -mt-3" width="250" height="250">
 
-                <label class="uppercase tracking-wide text-black font-serif  mb-10 w-50 text-xl" for="usuario">Usuario</label>
+                <label class="uppercase tracking-wide text-black font-serif  mb-10 w-50 text-xl" for="usuario">Email</label>
                 <input type="text"
                     class="block border border-green-900 w-full p-3 rounded mb-4 text-blue-800"
-                    name="usuario"
+                    name="email"
                     placeholder=""/>
 
                 <label class="uppercase tracking-wide text-black font-serif mb-10 w-50 text-xl" 

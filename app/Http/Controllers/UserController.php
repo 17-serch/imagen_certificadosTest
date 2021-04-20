@@ -27,16 +27,18 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        $name = $request->usuario;
-        $password = $request->password;
-        $user = User::where('name', $name)->where('password', $password)->first();
+        $cursosAprobado=Curso_Aprobado::all();
 
+        $email = $request->email;
+        $password = $request->password;
+        $user = User::where('email', $email)->where('password', $password)->first();
+
+        $userLogueado = $user;
         if ($user) {
-            return "credenciales correctas";
+            return view('cursos_recibidos', compact('userLogueado'), compact('cursosAprobado'));
         } else {
-            return "credenciales incorrectas";
+            return view('auth.login');
         }
-        // return $request->usuario;
     }
 
     /**
@@ -49,12 +51,12 @@ class UserController extends Controller
     // un request laravel trae toda la info del formulario
     public function store(Request $request)
     {
-        if ($request->name==null or $request->password==null) {
+        if ($request->email==null or $request->password==null) {
             return redirect('crear_cuenta');
         }
 
         $this->validate($request, [
-            'name' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
 
@@ -117,10 +119,11 @@ class UserController extends Controller
         $user->apellido=$request->input('apellido');
         $user->telefono=$request->input('telefono');
         $user->cedula=$request->input('cedula');
+        $user->genero=$request->input('genero');
+        $user->password=$request->input('password');
 
         if ($user->save()) {
             $userLogueado = $user;
-
 
             $cursosAprobado=Curso_Aprobado::all();
 
