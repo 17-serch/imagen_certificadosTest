@@ -83,7 +83,7 @@
                 </tr>
             </thead>
             <tbody class="border-collapse border border-grey-100 ">
-                @foreach($cursoAprobado as $curso)
+                @foreach($cursosAprobado as $curso)
                 <tr class="border-collapse border border-grey-100 ">
                     <td class="p-3">{{$curso->nombre}}</td>
                     <td class="p-3">{{$curso->horas}}</td>

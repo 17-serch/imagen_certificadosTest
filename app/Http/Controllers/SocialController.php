@@ -9,6 +9,7 @@ use Exception;
 use Auth;
 use App\Models\SocialProfile;
 use App\Models\User;
+use App\Models\Curso_Aprobado;
 
 class SocialController extends Controller
 {
@@ -58,8 +59,8 @@ class SocialController extends Controller
                     $userLogueado = $user;
                     return view('actualizacion_datos', compact('userLogueado'));
                 }
-                
-                return view('cursos_recibidos', compact('userLogueado'));
+                $cursosAprobado=Curso_Aprobado::all();
+                return view('cursos_recibidos', compact('userLogueado'), compact('cursosAprobado'));
 
     }
 }

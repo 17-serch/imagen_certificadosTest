@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
-
 use App\Models\Curso_Aprobado;
 
 class UserController extends Controller
@@ -123,9 +122,9 @@ class UserController extends Controller
             $userLogueado = $user;
 
 
-            $cursoAprobado=Curso_Aprobado::all();
+            $cursosAprobado=Curso_Aprobado::all();
 
-            return view('cursos_recibidos', compact('userLogueado'), compact('cursoAprobado'));
+            return view('cursos_recibidos', compact('userLogueado'), compact('cursosAprobado'));
         }
     }
 

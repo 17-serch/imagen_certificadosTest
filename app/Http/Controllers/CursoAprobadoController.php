@@ -18,10 +18,10 @@ class CursoAprobadoController extends Controller
     {
         // $cursoAprobado = Curso_Aprobado::all();
 
-        $cursoAprobado=Curso_Aprobado::all();
+        $cursosAprobado=Curso_Aprobado::all();
         $userLogueado = User::all()->first();
 
-        return view('cursos_recibidos', compact('cursoAprobado'), compact('userLogueado'));
+        return view('cursos_recibidos', compact('cursosAprobado'), compact('userLogueado'));
     }
 
     /**
