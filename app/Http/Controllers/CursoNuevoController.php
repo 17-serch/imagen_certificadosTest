@@ -16,7 +16,7 @@ class CursoNuevoController extends Controller
     public function index()
     {
         $cursosNuevo=Curso_Nuevo::all();
-        return $cursosNuevo;
+        return view ('mas_cursos',compact('cursosNuevo'));
     }
 
     /**

@@ -1,71 +1,86 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\SocialController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\ActualizarDatosController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CursoAprobadoController;
+use App\Http\Controllers\EncuestaController;
+use App\Http\Controllers\MasCursosController;
+use App\Http\Controllers\CursoNuevoController;
+use App\Http\Controllers\CertificadoController;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Models\User;
+
+$user = User::all()->first();
+
 
 
 
 Route::get('/', function () {
     return view('auth/login');
 });
-Route::get('login/', function () {
+
+Route::get('/login', function () {
     return view('auth/login');
 });
 
-Route::get('crear_cuenta/', function () {
+// nos loguea con redes sociales
+Route::get('login/{driver}', [SocialController::class, 'facebookRedirect']);
+Route::get('login/{driver}/callback', [SocialController::class, 'loginWithFacebook']);
+
+// nos lleva a la pantalla de crear cuenta
+Route::get('/crear_cuenta', function(){
     return view('crear_cuenta');
 });
 
-Route::get('actualizacion_datos/', function () {
+Route::resource('user', UserController::class);
+
+Route::resource('cursos', CursoAprobadoController::class);
+
+Route::resource('mas_cursos', MasCursosController::class);
+
+Route::get('formulario', [EncuestaController::class, 'index']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// muestra 
+Route::get('cursos_recibidos', [CursoAprobadoController::class, 'index']);
+
+
+// nos lleva a la pantalla de actualizacion de datos
+Route::get('/actualizacion_datos', function(){
     return view('actualizacion_datos');
 });
 
-Route::get('cursos_recibidos/', function () {
-    return view('cursos_recibidos');
-});
-
-Route::get('formulario/', function () {
-    return view('formulario');
-});
-
-Route::get('mas_cursos/', function () {
-    return view('mas_cursos');
-});
-
-Route::get('nuevos_cursos/', function () {
-    return view('nuevos_cursos');
-});
-
-Route::get('subir_certificados/', function () {
-    return view('subir_certificados');
-});
 
 
 
-Route::get('auth/{driver}', [SocialController::class, 'facebookRedirect']);
 
-Route::get('auth/{driver}/callback', [SocialController::class, 'loginWithFacebook']);
+Route::get('nuevos_cursos', [CursoNuevoController::class, 'index']);
+
+Route::get('subir_certificados', [CertificadoController::class, 'index']);
+
 

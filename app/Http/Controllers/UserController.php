@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 
+use App\Models\Curso_Aprobado;
+
 class UserController extends Controller
 {
     /**
@@ -15,8 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user=User::all();
-        return $user;
+        $user = User::all()->first();
+        return view('actualizacion_datos', compact('user'));
     }
 
     /**
@@ -24,9 +26,18 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $name = $request->usuario;
+        $password = $request->password;
+        $user = User::where('name', $name)->where('password', $password)->first();
+
+        if ($user) {
+            return "credenciales correctas";
+        } else {
+            return "credenciales incorrectas";
+        }
+        // return $request->usuario;
     }
 
     /**
@@ -35,21 +46,36 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    // un request laravel trae toda la info del formulario
     public function store(Request $request)
     {
-        $user=new User();
+        if ($request->name==null or $request->password==null) {
+            return redirect('crear_cuenta');
+        }
+
+        $this->validate($request, [
+            'name' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user=new User();        
         $user->name=$request->name;
         $user->apellido=$request->apellido;
         $user->telefono=$request->telefono;
         $user->genero=$request->genero;
         $user->email=$request->email;
         $user->email_verified_at=$request->email_verified_at;
+        $user->cedula=$request->cedula;
         $user->password=$request->password;
         $user->current_team_id=$request->current_team_id;
         $user->profile_photo_path=$request->profile_photo_path;
         $user->id_roles=$request->id_roles;
+        
         if($user->save()){
-            return new UserResource($user);
+            $userLogueado = $user;
+            
+            return view('actualizacion_datos', compact('userLogueado'));
         }
     }
 
@@ -61,8 +87,9 @@ class UserController extends Controller
      */
     public function show($id)
     {    
-        $user=User::findf0rFail($id);
-        return new UserResource($user);
+        // $user=User::findf0rFail($id);
+        // return new UserResource($user);
+        return view('cursos_recibidos');
     }
 
     /**
@@ -73,8 +100,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user=User::find($id);
-        return $user;   
+        $user=User::findOrFail($id);
+        return view('actualizacion_datos',compact('user'));   
     }
 
     /**
@@ -86,19 +113,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user=User::findOrFail($id);
-        $user->name=$request->name;
-        $user->apellido=$request->apellido;
-        $user->telefono=$request->telefono;
-        $user->genero=$request->genero;
-        $user->email=$request->email;
-        $user->email_verified_at=$request->email_verified_at;
-        $user->password=$request->password;
-        $user->current_team_id=$request->current_team_id;
-        $user->profile_photo_path=$request->profile_photo_path;
-        $user->id_roles=$request->id_roles;
-        if($user->save()){
-            return new UserResource($user);
+        $user = User::findOrFail($id);
+        $user->name=$request->input('name');
+        $user->apellido=$request->input('apellido');
+        $user->telefono=$request->input('telefono');
+        $user->cedula=$request->input('cedula');
+
+        if ($user->save()) {
+            $userLogueado = $user;
+
+
+            $cursoAprobado=Curso_Aprobado::all();
+
+            return view('cursos_recibidos', compact('userLogueado'), compact('cursoAprobado'));
         }
     }
 

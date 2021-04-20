@@ -3,22 +3,63 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Models\User;
 use Validator;
 use Socialite;
 use Exception;
 use Auth;
+use App\Models\SocialProfile;
+use App\Models\User;
 
 class SocialController extends Controller
 {
     public function facebookRedirect($driver)
     {
-        return Socialite::driver($driver)->redirect();
-    }
+        $drivers = ['facebook', 'google'];
 
-    public function loginWithFacebook($driver)
+        if (in_array($driver, $drivers)) {
+            return Socialite::driver($driver)->redirect();
+        } else {
+            return redirect('login')->with('info',$driver.' no es una aplicación valida para poder loguearse');
+        }
+    }
+    public function loginWithFacebook(Request $request, $driver)
     {
-        $user = Socialite::driver($driver)->user();
+        if ($request->get('error')){
+            return redirect('login');
+        }
+
+        $userSocialite = Socialite::driver($driver)->user();
+
+        $social_profile = SocialProfile::where('social_id', $userSocialite->getId())->where('social_name', $driver)->first();
+        
+        if ($social_profile) {
+            $userLogueado = User::where('fb_id', $social_profile->social_id)->get();
+            $userLogueado = $userLogueado[0];
+        }
+        
+        if (!$social_profile) {
+            
+            $user = User::where('fb_id', $userSocialite->id)->first();
+            
+            if (!$user) {
+                $user = User::create([
+                    'name' => $userSocialite->getName(),
+                    'email' => $userSocialite->getEmail(),
+                    'fb_id' => $userSocialite->id,
+                    ]);
+                }
+                
+                $social_profile = SocialProfile::create([
+                    'user_id'=>$user->id,
+                    'social_id'=>$userSocialite->getId(),
+                    'social_name'=>$driver,
+                    'social_avatar'=>$userSocialite->getAvatar(),
+                    ]);
+                    $userLogueado = $user;
+                    return view('actualizacion_datos', compact('userLogueado'));
+                }
+                
+                return view('cursos_recibidos', compact('userLogueado'));
+
     }
 }

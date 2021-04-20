@@ -18,7 +18,7 @@ class EncuestaController extends Controller
         //all trae todos los registros
 
         $encuesta=Encuesta::all();
-        return $encuesta;
+        return view('formulario');
     }
 
     /**

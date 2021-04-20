@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Curso_Aprobado;
 use Illuminate\Http\Request;
 use App\Http\Resources\CursoAprobadoResource;
@@ -13,10 +14,14 @@ class CursoAprobadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $id)
     {
+        // $cursoAprobado = Curso_Aprobado::all();
+
         $cursoAprobado=Curso_Aprobado::all();
-        return $cursoAprobado;
+        $userLogueado = User::all()->first();
+
+        return view('cursos_recibidos', compact('cursoAprobado'), compact('userLogueado'));
     }
 
     /**

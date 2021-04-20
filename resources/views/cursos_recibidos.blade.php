@@ -9,10 +9,15 @@
     <title>Cursos Recibidos</title>
 </head>
 
-<body class="container ">
+<body class="container">
+
+    <div class="p-10">
+        {{ $userLogueado}}
+    </div>
+
     <div>
         <!--======= Inicio de Navegacion =========-->
-        <nav class="flex items-center justify-between flex-wrap bg-grey-100  p-6 ">
+        <nav class="flex items-center justify-between flex-wrap bg-grey-100 p-6">
             <div class="flex items-center flex-wrap text-write mr-6">
             <a href="https://www.esquel.org.ec/">
                 <img src="https://www.esquel.org.ec/templates/g5_hydrogen/custom/images/Logo%20Esquel%20Horizontal.svg" alt="logo" class="fill-current h-100 w-100 mr-2" width="250" height="250">
@@ -33,7 +38,7 @@
             </div>
             <div id='menu' class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden">
                 <div class="text-sm lg:flex-grow">
-                    <a href="mas_cursos" class=" px-4 py-2 text-green-300 rounded hover:text-green-100
+                    <a href="{{ route('mas_cursos.index', $userLogueado->id) }}" class=" px-4 py-2 text-green-300 rounded hover:text-green-100
                       hover:bg-white text-xl font-semibold">
                         Cursos Para ti
                     </a>
@@ -48,27 +53,28 @@
             <!--======= Fin header=========-->
 
         </header>
+
         <div class="py-6 px-4 sm:px-10 lg:items-center">
             <ul>
                 <li>
                     <div class="flex justify-end">
-                        <h3 class="text-xl font-bold">Nombre del usruario : </h3>
-                        <imput class="text-xl border-green-200 "> Alisson Chavez</imput>
+                        <h3 class="text-xl font-bold">Nombre del usuario : </h3>
+                        <input class="text-xl" type="text" value="{{ $userLogueado->name }}">
                     </div>
                 </li>
                 <li>
                     <div class="flex justify-end">
                         <h3 class="text-xl font-bold">Número de Cedula : </h3>
-                        <imput class="text-xl"> 1755731542</imput>
+                        <input class="text-xl" type="text" value="{{ $userLogueado->cedula }}">
                     </div>
                 </li>
             </ul>
         </div>
     </div>
     </header>
-
+    
     <div class="mb-80 container py-10 2xl:p-30 xl:p-20 ">
-        <table class="border-collapse border border-grey-100 text-lg">
+        <table class="container border-collapse border border-grey-100 text-lg">
             <thead class="text-left border-collapse border border-text-white  bg-grey-100 font-bold">
                 <tr>
                     <th class="p-3 w-1/2 ">Cursos</th>
@@ -77,26 +83,13 @@
                 </tr>
             </thead>
             <tbody class="border-collapse border border-grey-100 ">
+                @foreach($cursoAprobado as $curso)
                 <tr class="border-collapse border border-grey-100 ">
-                    <td class="p-3">Intro to CSS</td>
-                    <td class="p-3">Adam</td>
+                    <td class="p-3">{{$curso->nombre}}</td>
+                    <td class="p-3">{{$curso->horas}}</td>
                     <td class="p-3"><a href="formulario">858</a></td>
                 </tr>
-                <tr>
-                    <td class="p-3">A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
-                    <td class="p-3">Adam</td>
-                    <td class="p-3"><a href="formulario">112</a></td>
-                </tr>
-                <tr class="border-collapse border border-grey-100 ">
-                    <td class="p-3">Intro to JavaScript</td>
-                    <td class="p-3">Chris</td>
-                    <td class="p-3"><a href="formulario">1,280</a></td>
-                </tr>
-                <tr class="border-collapse border border-grey-100 ">
-                    <td class="p-3">Intro to JavaScript</td>
-                    <td class="p-3">Alisson</td>
-                    <td class="p-3">Proceso</td>
-                </tr>
+                @endforeach()
             </tbody>
         </table>
     </div>

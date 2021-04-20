@@ -25,6 +25,11 @@
 
 <body>
 
+    <div class="p-10">
+        {{$userLogueado}}
+    </div>
+
+
     <!-- Barra de navegacion -->
     <nav class="bg-gray-300 p-6">
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -57,7 +62,7 @@
                     </div>
                     <div class="hidden sm:block sm:m-8">
                         <div class="flex space-x-4">
-                            <a href="cursos_recibidos" class=" px-4 py-2 text-white rounded hover:text-green-100 hover:bg-white text-xl font-semibold ">Certificados</a>
+                            <a href="{{route('cursos.index',$userLogueado->id)}}" class=" px-4 py-2 text-white rounded hover:text-green-100 hover:bg-white text-xl font-semibold ">Certificados</a>
                         </div>
                     </div>
                 </div>
@@ -72,7 +77,6 @@
         </div>
     </nav>
 
-
     <!--titutlo-->
     <div class=" text-center pb-10 pt-10 ">
         <h1 class="font-bold text-green-100 break-normal text-3xl md:text-5xl">Mas Cursos Para TI</h1>
@@ -84,11 +88,11 @@
                 <tr>
                     <th scope="col" class="px-6 py-3 text-center text-xs font-bold bg-negro uppercase tracking-wider">CURSO</th>
                     <th scope="col" class="px-6 py-3 text-center text-xs font-bold bg-negro uppercase tracking-wider">FECHA DE INICIO</th>
-                    <th scope="col" class="px-6 py-3 text-center text-xs font-bold bg-negro uppercase tracking-wider">DURACION CURSO</th>
                     <th scope="col" class="px-6 py-3 text-center text-xs font-bold bg-negro uppercase tracking-wider">INFORMACION</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
+                @foreach($cursosNuevo as $nuevo)
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
@@ -96,25 +100,23 @@
                                 <img class="h-10 w-10 rounded-full" src="https://image.flaticon.com/icons/png/512/1567/1567341.png" alt="IMAGEN ICONO">
                             </div>
                             <div class="ml-4">
-                                <div class="text-sm text-gray-900 text-center">PROGRAMACION</div>
+                                <div class="text-sm text-gray-900 text-center">{{$nuevo->nombre}}</div>
                             </div>
                         </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-center">
-                        <div class="text-sm text-gray-900">25/03/2021</div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center">
-                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-white">40 Horas</span>
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-white">{{$nuevo->horas}}</span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-center">
                         <button href="#" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">VER</button>
                     </td>
                 </tr>
+                @endforeach()
                 <!-- mas tablas tr -->
             </tbody>
         </table>
     </div>
-
+    
     <!--======= footer =========-->
     <footer class="mt-64 footer bg-green-200 relative pt-1 border-b-2 border-blue-700">
     <div class="container mx-auto p-6">
