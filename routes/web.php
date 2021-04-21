@@ -11,6 +11,8 @@ use App\Http\Controllers\MasCursosController;
 use App\Http\Controllers\CursoNuevoController;
 use App\Http\Controllers\CertificadoController;
 
+
+
 Route::get('/', function () {
     return view('auth/login');
 });
@@ -74,5 +76,4 @@ Route::get('/actualizacion_datos', function(){
 Route::get('nuevos_cursos', [CursoNuevoController::class, 'index']);
 
 Route::get('subir_certificados', [CertificadoController::class, 'index']);
-
 
