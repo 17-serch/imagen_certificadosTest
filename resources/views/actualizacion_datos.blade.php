@@ -41,7 +41,7 @@
                 <div class="md:flex w-9/12 max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
                     <div class="p-8">
                         <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Nombres</h1>
-                        <input value="" name="name" type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="Lucia Mary">
+                        <input value="{{$userLogueado->name}}" name="name" type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="Lucia Mary">
                         
                     </div>
                 </div>
