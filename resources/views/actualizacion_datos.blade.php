@@ -11,9 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
 </head>
 <body class="bg-grey-100 grid grid-rows-1">
-    <div class="p-10">
+
+    {{-- <div class="p-10">
         {{$userLogueado}}
-    </div>
+    </div> --}}
 
     <div class="grid grid-rows-1 flex-auto w-full max-w-md mx-auto rounded sm:rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
         <form action="{{ route('user.update', $userLogueado->id)}}" method="POST" class="bg-white">

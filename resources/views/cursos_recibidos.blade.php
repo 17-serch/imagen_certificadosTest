@@ -11,9 +11,9 @@
 
 <body class="container">
 
-    <div class="p-10">
+    {{-- <div class="p-10">
         {{ $userLogueado}}
-    </div>
+    </div> --}}
 
     <div>
         <!--======= Inicio de Navegacion =========-->

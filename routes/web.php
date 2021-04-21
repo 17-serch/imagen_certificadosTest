@@ -11,14 +11,6 @@ use App\Http\Controllers\MasCursosController;
 use App\Http\Controllers\CursoNuevoController;
 use App\Http\Controllers\CertificadoController;
 
-
-use App\Models\User;
-
-$user = User::all()->first();
-
-
-
-
 Route::get('/', function () {
     return view('auth/login');
 });
