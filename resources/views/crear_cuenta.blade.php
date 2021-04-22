@@ -11,10 +11,13 @@
         <link rel="stylesheet" href="{{ asset('css/app.css')}}">
         
     </head>
-<body class="bg-grey-100 grid grid-rows-1">
+<body class="container bg-grey-100 ">
 	<div class="bg-grey-lighter min-h-screen flex flex-col">
-        <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-            {{-- action="{{route('actualizacion_datos')}}" --}}
+        <div class="container mt-20 px-7 py-20 rounded max-w-lg bg-white shadow-md">
+
+            <img src="https://www.gobiernoabierto.ec/wp-content/uploads/2020/01/Logo-Esquel-color.png" alt="logo" width="250" height="250">
+            <h1 class="mt-20 mb-6 text-5xl text-center text-black font-sans">CREAR CUENTA</h1>
+           
             @if ($errors->all())
                 <ul class="bg-red-100 p-5 text-white my-5">
                     @foreach ($errors->all() as $error)
@@ -22,48 +25,47 @@
                     @endforeach
                 </ul>
             @endif
-            <form action="{{ route('user.store') }}" method="POST" class="bg-white px-7 py-9 rounded shadow-md w-full">
+
+            @if (isset($alert))
+                <div class="my-5 p-5 text-center bg-red-100 w-full text-white">
+                    {{$alert}}
+                </div>
+            @endif
+
+            <form action="{{ route('user.store') }}" method="POST" class="rounded max-w-lg">
                 @csrf
-                <h1 class="mb-8 text-5xl text-center font-serif md:georgia text-black">CREAR CUENTA</h1>
-
-                <img src="https://www.gobiernoabierto.ec/wp-content/uploads/2020/01/Logo-Esquel-color.png" alt="logo" class="fill-current h-100 w-100 mr-2" width="250" height="250">
-
-                <label class="uppercase tracking-wide text-black font-serif mb-10 w-50 text-xl"
-                    for="usuario"> Email 
+                <label class="font-sans ml-2 uppercase tracking-wide text-black w-50 text-xl"
+                    for="email"> Email 
                 </label>
                 
                 <input 
                     type="text"
                     class="block border border-green-900  w-full p-3 rounded mb-4 text-blue-800"
                     name="email"
-                    placeholder=""/>
+                    placeholder="Email"/>
 
-                <label class="uppercase tracking-wide text-black font-serif mb-10 w-50 text-xl" 
-                    for="contraseña"> Contraseña 
+                <label class="font-sans ml-2 uppercase tracking-wide text-black w-50 text-xl" 
+                    for="password"> Contraseña 
                 </label>
 
                 <input 
                     type="password"
                     class="block border border-green-900 w-full p-3 rounded mb-4 text-blue-800"
                     name="password"
-                    placeholder=""/>
+                    placeholder="Contraseña"/>
                 
-                <label class="uppercase tracking-wide text-black font-serif mb-10 w-50 text-xl" 
-                    for="contraseña"> Confirmar contraseña
-                </label>
+                <label class="font-sans ml-2 uppercase tracking-wide text-black w-50 text-xl" for="password"> Confirmar contraseña</label>
 
                 <input 
                     type="password"
                     class="block border border-green-900 w-full p-3 rounded mb-4 text-blue-800"
                     name="password"
-                    placeholder=""/>   
-                
-                <div class="text-center text-sm text-gray-700 mt-3">
-                <button class="bg-blue hover:bg-blue-dark text-gray-700 font-bold py-2 px-4 rounded text-2xl">
-                
-                <input type="submit" value="Crear">
-                </button>
+                    placeholder="Contraseña"/>   
+
+                <div class="grid grid-row-1 gap-4 pt-5">
+                    <input class="outline-none text-base text-white px-10 py-3 transition duration-500 ease-in-out bg-gray-500 hover:bg-blue-500 transform hover:scale-105" type="submit" value="Crear">
                 </div>
+              
             </form>
 
         </div>

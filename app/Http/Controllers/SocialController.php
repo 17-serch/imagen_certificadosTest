@@ -29,6 +29,12 @@ class SocialController extends Controller
             return redirect('login');
         }
 
+        $findUser = User::where('email', $request->email)->first();
+        if ($findUser) {
+            return "El user si existe";
+        }
+
+
         $userSocialite = Socialite::driver($driver)->user();
 
         $social_profile = SocialProfile::where('social_id', $userSocialite->getId())->where('social_name', $driver)->first();
@@ -46,7 +52,7 @@ class SocialController extends Controller
                 $user = User::create([
                     'name' => $userSocialite->getName(),
                     'email' => $userSocialite->getEmail(),
-                    'fb_id' => $userSocialite->id,
+                    'fb_id' => $userSocialite->getId(),
                     ]);
             }
                 

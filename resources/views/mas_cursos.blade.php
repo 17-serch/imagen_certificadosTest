@@ -25,9 +25,9 @@
 
 <body>
 
-    {{-- <div class="p-10">
+    <div class="p-10">
         {{$userLogueado}}
-    </div> --}}
+    </div>
 
 
     <!-- Barra de navegacion -->

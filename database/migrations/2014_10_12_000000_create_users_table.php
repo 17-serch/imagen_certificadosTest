@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('cedula')->nullable();
-            $table->rememberToken();
+            $table->rememberToken(200);
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
             $table->unsignedBigInteger('id_roles')->nullable();

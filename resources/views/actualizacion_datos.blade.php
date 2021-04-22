@@ -10,96 +10,81 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
 </head>
-<body class="bg-grey-100 grid grid-rows-1">
+<body class="bg-grey-100">
 
     {{-- <div class="p-10">
         {{$userLogueado}}
     </div> --}}
 
-    <div class="grid grid-rows-1 flex-auto w-full max-w-md mx-auto rounded sm:rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
-        <form action="{{ route('user.update', $userLogueado->id)}}" method="POST" class="bg-white">
+    <div class="container max-w-3xl bg-white my-20 py-10 rounded">
+        
+        <div class="container">
+            @if ($errors->all())
+                <ul class="bg-red-100 p-5 text-white my-5">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
+    
+            <!-- header (logos fundación esquel) -->
+            <div class=" grid grid-cols-2 gap-5">
+                <a class="m-auto pt-10" href="https://www.esquel.org.ec/">
+                    <img src="https://www.esquel.org.ec/templates/g5_hydrogen/custom/images/Logo%20Esquel%20Horizontal.svg" alt="logo" width="250" height="250" link="https://www.esquel.org.ec/" >
+                </a>
+                <a class="m-auto pt-10" href="https://esquelclic.org/">
+                    <img src="https://esquelclic.org/images/logos/LogoCLIC%20.svg" alt="logo" width="250" height="250">
+                </a> 
+            </div>
+    
+        </div>
+    
+        <form action="{{ route('user.update', $userLogueado->id)}}" method="POST" class="grid grid-rows-9 gap-10 mx-16">
             @csrf
             @method('PUT')
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-2 " >
-                <div>
-                    <a href="https://www.esquel.org.ec/">
-                        <img class="transform scale-75 sm:scale-100 object-center md:object-top" src="https://www.esquel.org.ec/templates/g5_hydrogen/custom/images/Logo%20Esquel%20Horizontal.svg"alt="Fundacion Esquel" link="https://www.esquel.org.ec/" >
-                    </a>
-                </div> 
-                <div>
-                    <a href="https://esquelclic.org/">
-                        <img class="transform scale-75 sm:scale-100 object-center md:object-top" src="https://esquelclic.org/images/logos/LogoCLIC%20.svg" alt="esquel clic">
-                    </a> 
-                </div>    
+
+            <h1 class='text-center text-4xl mt-20'>Actualiza tus datos</h1>
+
+            <div class="">
+                <label class="font-sans ml-2 uppercase tracking-wide text-black text-xl">Nombres</label>
+                <input class="mt-3 block border border-green-900 w-full p-3 rounded mb-4 text-blue-800" value="{{$userLogueado->name}}" name="name" type="text" placeholder="Lucia Mary">
             </div>
-
-            <div class="grid grid-rows-5 gap-3">
-                <div class="object-bottom mt-12">
-                    <h1 class='text-center text-3xl sm:text-6xl object-scale-down '>Actualiza tus datos</h1>
-                </div>
-                <div class="md:flex w-9/12 max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
-                    <div class="p-8">
-                        <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Nombres</h1>
-                        <input value="{{$userLogueado->name}}" name="name" type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="Lucia Mary">
-                        
-                    </div>
-                </div>
-                        
-                <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
-                    <div class="p-8 ">
-                        <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Apellidos</h1>
-                        <input name="apellido" type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="Garcia Perez">
-                    </div>
-                </div>
-                    
-                <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
-                    <div class="p-8">
-                        <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Celular</h1>
-                        <input name="telefono" type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="0987532156">
-                    </div>
-                </div>
-                    
-                <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
-                    <div class="p-8">
-                        <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Cédula o pasaporte</h1>
-                        <input name="cedula" type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="1254896352">
-                    </div>
-                </div>
-
-                <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
-                    <div class="p-8">
-                        <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Genero</h1>
-                        <input name="genero" type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="1254896352">
-                    </div>
-                </div>
-                <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
-                    <div class="p-8">
-                        <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Contraseña</h1>
-                        <input name="password" type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="1254896352">
-                    </div>
-                </div>
-                <div class="md:flex w-9/12  max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl my-2">
-                    <div class="p-8">
-                        <h1 class="block mt-1 text-xl leading-tight font-medium text-black">Verifica Contraseña</h1>
-                        <input name="password_2" type="text" class="mt-5 pt-3 pr-4 sm:pr-40 focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-black rounded-md" placeholder="1254896352">
-                    </div>
-                </div>
-
-
-
+ 
+            <div class="">
+                <label class="font-sans ml-2 uppercase tracking-wide text-black text-xl">Apellidos</label>
+                <input class="mt-3 block border border-green-900 w-full p-3 rounded mb-4 text-blue-800" name="apellido" type="text" placeholder="Garcia Perez">
             </div>
-
-            <div class="text-left mb-8">
-                <input type="submit" value="Guardar" class="ml-20 mt-5 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-xl font- rounded-xl text-black bg-grey-200 hover:bg-grey-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+     
+            <div class="">
+                <label class="font-sans ml-2 uppercase tracking-wide text-black text-xl">Celular</label>
+                <input class="mt-3 block border border-green-900 w-full p-3 rounded mb-4 text-blue-800" name="telefono" type="text" placeholder="0987532156">
             </div>
-
-            <div>
-                <footer>
-                </footer>
+                
+ 
+            <div class="">
+                <label class="font-sans ml-2 uppercase tracking-wide text-black text-xl">Cédula o pasaporte</label>
+                <input class="mt-3 block border border-green-900 w-full p-3 rounded mb-4 text-blue-800" name="cedula" type="text" placeholder="1254896352">
             </div>
-
+       
+            <div class="">
+                <label class="font-sans ml-2 uppercase tracking-wide text-black text-xl">Genero</label>
+                <input class="mt-3 block border border-green-900 w-full p-3 rounded mb-4 text-blue-800" name="genero" type="text" placeholder="1254896352">
+            </div>
+       
+            <div class="">
+                <label class="font-sans ml-2 uppercase tracking-wide text-black text-xl">Contraseña</label>
+                <input class="mt-3 block border border-green-900 w-full p-3 rounded mb-4 text-blue-800" name="password" type="text" placeholder="1254896352">
+            </div>
+   
+            <div class="">
+                <label class="font-sans ml-2 uppercase tracking-wide text-black text-xl">Verifica Contraseña</label>
+                <input class="mt-3 block border border-green-900 w-full p-3 rounded mb-4 text-blue-800" name="password_2" type="text" placeholder="1254896352">
+            </div>
+                  
+            <input type="submit" value="Guardar" class="outline-none text-base text-white px-10 py-3 transition duration-500 ease-in-out bg-gray-500 hover:bg-blue-500 transform hover:scale-105">
+     
         </form>
+
     </div>
 
 </body>

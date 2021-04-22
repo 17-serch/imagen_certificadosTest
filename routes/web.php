@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use Laravel\Socialite\Facades\Socialite;
+
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\ActualizarDatosController;
 use App\Http\Controllers\UserController;

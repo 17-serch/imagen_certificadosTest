@@ -11,9 +11,9 @@
 
 <body class="container">
 
-    {{-- <div class="p-10">
-        {{ $userLogueado}}
-    </div> --}}
+    <div class="p-10">
+        {{$userLogueado}}
+    </div>
 
     <div>
         <!--======= Inicio de Navegacion =========-->
@@ -57,15 +57,17 @@
         <div class="py-6 px-4 sm:px-10 lg:items-center">
             <ul>
                 <li>
-                    <div class="flex justify-end">
-                        <h3 class="text-xl font-bold">Nombre del usuario : </h3>
-                        <input class="text-xl" type="text" value="{{ $userLogueado->name }}">
+                    <div class="flex justify-end mb-5">
+                        <h3 class="text-xl font-bold leading-none mr-2">Nombre del usuario :</h3>
+                        <p class="text-xl leading-none">{{ $userLogueado->name }}</p>
+                        {{-- <input class="text-xl" type="text" value="{{ $userLogueado->name }}"> --}}
                     </div>
                 </li>
                 <li>
                     <div class="flex justify-end">
-                        <h3 class="text-xl font-bold">Número de Cedula : </h3>
-                        <input class="text-xl" type="text" value="{{ $userLogueado->cedula }}">
+                        <h3 class="text-xl font-bold leading-none mr-2">Número de Cedula :</h3>
+                        <p class="text-xl leading-none">{{ $userLogueado->cedula}}</p>
+                        {{-- <input class="text-xl" type="text" value="{{ $userLogueado->cedula }}"> --}}
                     </div>
                 </li>
             </ul>
@@ -87,7 +89,7 @@
                 <tr class="border-collapse border border-grey-100 ">
                     <td class="p-3">{{$curso->nombre}}</td>
                     <td class="p-3">{{$curso->horas}}</td>
-                    <td class="p-3"><a href="formulario">858</a></td>
+                    <td class="p-3 text-black text-opacity-40 hover:text-opacity-100"><a href="formulario">858</a></td>
                 </tr>
                 @endforeach()
             </tbody>
