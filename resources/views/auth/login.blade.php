@@ -15,7 +15,9 @@
     <div class="bg-grey-lighter min-h-screen flex flex-col">
         
         @if (session('info'))
-            <div class="bg-red-100 p-5 text-white">{{session('info')}}</div>
+            <div class="bg-red-100 p-5 text-white">
+                {{session('info')}}
+            </div>
         @endif
         
         <div class="container max-w-lg px-10 shadow-md py-14 mt-20 bg-white rounded">
@@ -23,10 +25,10 @@
             <form action="{{ route('user.create') }}" method="PUT" class="pb-10 w-full">
                 @csrf
                 <img src="https://www.gobiernoabierto.ec/wp-content/uploads/2020/01/Logo-Esquel-color.png" alt="logo" width="250" height="250">
-                <h1 class="mt-16 mb-6 text-5xl text-center text-black font-sans">Login</h1>
+                <h1 class="mt-16 mb-6 text-4xl uppercase text-center text-black font-sans">Login</h1>
                 
                 @if (isset($alert))
-                    <div class="my-5 p-5 text-center bg-red-100 w-full text-white">
+                    <div class="my-5 px-5 py-3 text-sm text-center bg-red-100 w-full text-white">
                         {{$alert}}
                     </div>
                 @endif

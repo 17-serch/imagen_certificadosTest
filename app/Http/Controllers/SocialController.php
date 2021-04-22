@@ -60,7 +60,7 @@ class SocialController extends Controller
                 'user_id'=>$user->id,
                 'social_id'=>$userSocialite->getId(),
                 'social_name'=>$driver,
-                'social_avatar'=>$userSocialite->getAvatar(),
+                'social_avatar'=>$userSocialite->getAvatar()
             ]);
             
             $userLogueado = $user;

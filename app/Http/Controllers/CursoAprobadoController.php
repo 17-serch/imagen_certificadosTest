@@ -14,14 +14,15 @@ class CursoAprobadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $id)
+    public function index(Request $request)
     {
         // $cursoAprobado = Curso_Aprobado::all();
 
         $cursosAprobado=Curso_Aprobado::all();
-        $userLogueado = User::all()->first();
+        $userLogueado = User::where('id', $request->id)->first();
 
         return view('cursos_recibidos', compact('cursosAprobado'), compact('userLogueado'));
+
     }
 
     /**

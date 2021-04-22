@@ -27,7 +27,7 @@
             @endif
 
             @if (isset($alert))
-                <div class="my-5 p-5 text-center bg-red-100 w-full text-white">
+                <div class="my-5 px-5 py-3 text-sm text-center bg-red-100 w-full text-white">
                     {{$alert}}
                 </div>
             @endif

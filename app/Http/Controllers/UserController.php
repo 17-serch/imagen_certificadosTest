@@ -29,8 +29,6 @@ class UserController extends Controller
     {
         // return view('auth.login', ['alert' => $alert]);
 
-
- 
         if ($request->email == null) {
             $alert = "Llena el email";
         } else {
@@ -38,14 +36,23 @@ class UserController extends Controller
 
             // Le recomendamos crear cuenta por que ese usre no existe
             if (!$userLogueado) {
-                return view('crear_cuenta');
+                $emailIncorrect = $request->email;
+                $alert = "El email ". $emailIncorrect. " no esta registrado. Crea una cuenta con aquel email";
+                return view('crear_cuenta', ['alert' => $alert]);
             }
         }
         if ($request->password == null) {
-            $alert = "Llena el password";
+            $userLogueado = User::where('email', $request->email)->first();
+
+            // verifica si este user existe  en la base de datos
+            if ($userLogueado) {
+                $alert = $userLogueado->name. " llena el campo de contraseña";
+            } else {
+                $alert = "Llena el campo de contraseña";
+            }
         }
         if ($request->email == null and $request->password == null) {
-            $alert = "Llena los campos";
+            $alert = "Llena todos los campos";
         }
         if (isset($alert)) {
             return view('auth.login', ['alert' => $alert]);
@@ -60,9 +67,12 @@ class UserController extends Controller
 
                 // verificamos el password y email (entra y son correctos esos datos)
                 if ($userLogueado) {
-                    return $userLogueado;
+                    $cursosAprobado=Curso_Aprobado::all();
+                    return view('cursos_recibidos', compact('userLogueado'), compact('cursosAprobado'));
                 } else {
-                    return "contraseña incorrecta";
+                    $userLogueado = User::where('email', $request->email)->first();
+                    $alert = $userLogueado->name. " ingresaste una contraseña incorrecta";
+                    return view('auth.login', ['alert' => $alert]);
                 }
             }
         }
