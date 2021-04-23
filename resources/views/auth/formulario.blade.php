@@ -11,7 +11,7 @@
 <div class="max-w-6xl mx-auto sm:px-40 lg:px-40">
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg centrar" >
-                <div class="flex grid grid-cols-1 sm:grid-cols-2 gap-3 my-2 " >
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-2 " >
             <div>
                 <a href="https://www.esquel.org.ec/">
                     <img class="transform scale-75 sm:scale-100 object-center md:object-top" src="https://www.esquel.org.ec/templates/g5_hydrogen/custom/images/Logo%20Esquel%20Horizontal.svg"alt="Fundacion Esquel" link="https://www.esquel.org.ec/" >

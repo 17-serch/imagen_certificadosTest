@@ -14,15 +14,10 @@ class CursoAprobadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        // $cursoAprobado = Curso_Aprobado::all();
-
-        $cursosAprobado=Curso_Aprobado::all();
-        $userLogueado = User::where('id', $request->id)->first();
-
-        return view('cursos_recibidos', compact('cursosAprobado'), compact('userLogueado'));
-
+        return "Estamos viendo los cursos aprobados";
+        //
     }
 
     /**
@@ -31,7 +26,7 @@ class CursoAprobadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    { 
         //
     }
 

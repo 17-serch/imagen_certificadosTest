@@ -16,8 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all()->first();
-        return view('actualizacion_datos', compact('user'));
+        // $user = User::all()->first();
+        // return view('actualizacion_datos', compact('user'));
+        return "Estas en index";
     }
 
     /**
@@ -27,26 +28,25 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        // return view('auth.login', ['alert' => $alert]);
 
         if ($request->email == null) {
             $alert = "Llena el email";
         } else {
-            $userLogueado = User::where('email', $request->email)->first();
+            $user = User::where('email', $request->email)->first();
 
             // Le recomendamos crear cuenta por que ese usre no existe
-            if (!$userLogueado) {
+            if (!$user) {
                 $emailIncorrect = $request->email;
                 $alert = "El email ". $emailIncorrect. " no esta registrado. Crea una cuenta con aquel email";
-                return view('crear_cuenta', ['alert' => $alert]);
+                return view('auth.crear_cuenta', ['alert' => $alert]);
             }
         }
         if ($request->password == null) {
-            $userLogueado = User::where('email', $request->email)->first();
+            $user = User::where('email', $request->email)->first();
 
             // verifica si este user existe  en la base de datos
-            if ($userLogueado) {
-                $alert = $userLogueado->name. " llena el campo de contraseña";
+            if ($user) {
+                $alert = $user->name. " llena el campo de contraseña";
             } else {
                 $alert = "Llena el campo de contraseña";
             }
@@ -63,20 +63,23 @@ class UserController extends Controller
 
             // si existe en la base de datos el correo 
             if ($findEmail) {
-                $userLogueado = User::where('email', $request->email)->where('password', $request->password)->first();
+                $user = User::where('email', $request->email)->where('password', $request->password)->first();
 
                 // verificamos el password y email (entra y son correctos esos datos)
-                if ($userLogueado) {
-                    $cursosAprobado=Curso_Aprobado::all();
-                    return view('cursos_recibidos', compact('userLogueado'), compact('cursosAprobado'));
+                if ($user) {
+                    // $cursosAprobado=Curso_Aprobado::all();
+                    // return view('auth.cursos_recibidos', compact('cursosAprobado'));
+                    
+                    auth()->login($user);
+                    return redirect('cursos_recibidos');
+                 
                 } else {
-                    $userLogueado = User::where('email', $request->email)->first();
-                    $alert = $userLogueado->name. " ingresaste una contraseña incorrecta";
+                    $user = User::where('email', $request->email)->first();
+                    $alert = $user->name. " tu contraseña es incorrecta";
                     return view('auth.login', ['alert' => $alert]);
                 }
             }
         }
-        
     }
 
     /**
@@ -95,44 +98,36 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        $userAct = User::where('remember_token', $request->_token)->where('email', $request->email)->first();
-        
-        if (!$userAct) {
+        // Si el user existe en la base de datos, no entra al if a crear el mismo user
+        $userLogueado = User::where('email', $request->email)->first();
+
+        if (!$userLogueado) {
+            $user=new User();        
+            $user->name=$request->name;
+            $user->apellido=$request->apellido;
+            $user->telefono=$request->telefono;
+            $user->genero=$request->genero;
+            $user->email=$request->email;
+            $user->email_verified_at=$request->email_verified_at;
+            $user->cedula=$request->cedula;
+            $user->password=$request->password;
+            $user->remember_token=$request->_token;
+            $user->current_team_id=$request->current_team_id;
+            $user->profile_photo_path=$request->profile_photo_path;
+            $user->id_roles=$request->id_roles;
             
-            // Si el user existe en la base de datos, no entra al if a crear el mismo user
-            // _token
-            $userLogueado = User::where('email', $request->email)->first();
-            if (!$userLogueado) {
+            if($user->save()){
 
-                $user=new User();        
-                $user->name=$request->name;
-                $user->apellido=$request->apellido;
-                $user->telefono=$request->telefono;
-                $user->genero=$request->genero;
-                $user->email=$request->email;
-                $user->email_verified_at=$request->email_verified_at;
-                $user->cedula=$request->cedula;
-                $user->password=$request->password;
-                $user->remember_token=$request->_token;
-                $user->current_team_id=$request->current_team_id;
-                $user->profile_photo_path=$request->profile_photo_path;
-                $user->id_roles=$request->id_roles;
-                
-                if($user->save()){
-
-                    $userLogueado = $user;
-                    return view('actualizacion_datos', compact('userLogueado'));
-                }
-            } else {
-
-                $alert = "La dirección de correo ". $request->email. " ya esta registrada, Inicia sesión";
-                return view('crear_cuenta', ['alert' => $alert]);
+                // logueamos al usuario validado
+                auth()->login($user);
+                // redireccionamos a otra vista
+                return redirect('actualizacion_datos');
             }
 
         } else {
-
-            $userLogueado = $userAct;
-            return view('actualizacion_datos', compact('userLogueado'));
+            // mensaje de correo existente
+            $alert = "La dirección de correo ". $request->email. " ya esta registrada. Inicia sesión";
+            return view('auth/crear_cuenta', ['alert' => $alert]);
         }
     }
 
@@ -157,7 +152,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user=User::findOrFail($id);
-        return view('actualizacion_datos',compact('user'));   
+        return view('actualizacion_datos',compact('user'));
     }
 
     /**
@@ -169,6 +164,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $this->validate($request, [
             'name' =>'required',
             'apellido' =>'required',
@@ -192,10 +188,14 @@ class UserController extends Controller
             if ($user->save()) {
                 $userLogueado = $user;
                 $cursosAprobado=Curso_Aprobado::all();
-                return view('cursos_recibidos', compact('userLogueado'), compact('cursosAprobado'));
+                // return view('auth.cursos_recibidos', compact('cursosAprobado'));
+
+                return redirect('cursos_recibidos');
+
             }
         } else {
             return redirect('actualizacion_datos');
+
         }
     }
 
@@ -210,6 +210,19 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         if($user->delete()){
             return new UserResource($user);
+
         }
+    }
+
+    public function log(Request $request) {
+
+        // ingresa a la session y genera una nueva
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        // borra datos dek usuario logueado
+        auth()->logout();
+        return redirect('login');
     }
 }

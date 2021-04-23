@@ -9,11 +9,10 @@ use App\Http\Resources\UserResource;
 
 class MasCursosController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $userLogueado = User::where('id', $request->id)->first();
         $cursosNuevo=Curso_Nuevo::all();
-
-        return view('mas_cursos', compact('userLogueado'), compact('cursosNuevo'));
+        return view('auth.mas_cursos', compact('cursosNuevo'));
+        
     }
 }
