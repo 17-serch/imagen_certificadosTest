@@ -118,7 +118,6 @@
                     <tbody class="border-collapse border border-grey-100 ">
                         
                         @if (isset($cursosAprobado))
-                        <div class="p-10 bg-red-100"> {{ $cursosAprobado }} </div>
                             @foreach($cursosAprobado as $curso)
                             <tr class="border-collapse border border-grey-100 ">
                                 <td class="p-3">{{$curso->nombre}}</td>
