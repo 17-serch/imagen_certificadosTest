@@ -191,11 +191,10 @@ class UserController extends Controller
                 // return view('auth.cursos_recibidos', compact('cursosAprobado'));
 
                 return redirect('cursos_recibidos');
-
             }
+
         } else {
             return redirect('actualizacion_datos');
-
         }
     }
 
@@ -210,19 +209,35 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         if($user->delete()){
             return new UserResource($user);
-
         }
     }
 
-    public function log(Request $request) {
+    // mas metodos aprate de los que se crean por default
+    // metodo para cerrar sessión
+    public function logoutUser(Request $request) {
 
         // ingresa a la session y genera una nueva
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         // borra datos dek usuario logueado
         auth()->logout();
         return redirect('login');
     }
+
+    // metodo para cerrar sesión a los usuarios de redes sociales
+    public function logoutUserSocialNetwork () {
+        return redirect('login');
+    }
+
+    // muestra los cuersos aprobados del usuario
+    public function cursosAprobados () {
+        $cursosAprobado = Curso_Aprobado::all();
+        return view('auth.cursos_recibidos', compact('cursosAprobado'));
+    }
+
+    public function updatePageReceivedCourses () {
+        return "refrescaste la paguina";
+    }
+
 }

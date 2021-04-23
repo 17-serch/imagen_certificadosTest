@@ -11,12 +11,50 @@ use App\Http\Controllers\MasCursosController;
 use App\Http\Controllers\CursoNuevoController;
 use App\Http\Controllers\CertificadoController;
 
+
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+
+
+
+
+
+Route::get('/', function () {
+    return view('auth.login');
+});
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->middleware(['auth'])->name('login');
+
+
+
+
+
+
+
 Route::get('createUser', [UserController::class, 'store'])->name('createUser');
 Route::get('checkUser', [UserController::class, 'create'])->name('checkUser');
 Route::put('updateUser/{id}', [UserController::class, 'update'])->name('updateUser');
 Route::get('masCursos', [MasCursosController::class, 'index'])->name('masCursos');
-Route::get('logout', [UserController::class, 'log'])->name('logout');
+Route::get('cursosAprobadosUser', [UserController::class, 'cursosAprobados'])->name('cursosAprobadosUser');
+Route::get('logout', [UserController::class, 'logoutUser'])->name('logout');
 
+// cierra sesión al usuario de red social
+Route::get('/login/{driver}/logout', [UserController::class, 'logoutUserSocialNetwork'])->name('/login/{driver}/logout');
+
+// resualve error al recargar pagina despues de loguearse por red social
+Route::get('/login/{driver}/callback', [UserController::class, 'updatePageReceivedCourses'])->name('/login/{driver}/callback');
+
+// http://localhost:8000/login/facebook/callback
 
 Route::get('/', function () {
     return view('auth/login');
@@ -27,14 +65,7 @@ Route::get('login', function () {
 });
 
 
-
-
-
-
-
-
-
-
+// http://localhost:8000/login/facebook/callback?code=AQAkbbK2a7W__TbEHgx2ESskMjjV
 
 
 // redirige al usuario ya existente a cursos recibidos
@@ -72,4 +103,3 @@ Route::get('subir_certificados', function () {
     return view('auth/subir_certificados');
 });
 // Termina devolución de vistas
-

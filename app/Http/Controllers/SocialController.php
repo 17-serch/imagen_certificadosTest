@@ -28,13 +28,9 @@ class SocialController extends Controller
     }
     public function loginWithFacebook(Request $request, $driver)
     {
+        // entra si no permites iniciar sesón desde la red social
         if ($request->get('error')){
             return redirect('auth.login');
-        }
-
-        $findUser = User::where('email', $request->email)->first();
-        if ($findUser) {
-            return "El user si existe";
         }
 
         // extraemos usuario de con el modelo Socialite
@@ -71,6 +67,7 @@ class SocialController extends Controller
         $user = User::where('email', $userSocialite->getEmail())->first();
        
         auth()->login($user);
-        return redirect('cursos_recibidos');
+        // return redirect('cursos_recibidos');
+        return view('auth.cursos_recibidos', ['cursosAprobado' => $allCourses]);
     }
 }
