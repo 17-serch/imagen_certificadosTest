@@ -148,15 +148,11 @@ class UserController extends Controller
                 return view('auth/crear_cuenta', ['alert' => $alert]);
             }
 
-            $user=new User();        
-            $user->name=$request->name;
-            $user->apellido=$request->apellido;
-            $user->telefono=$request->telefono;
-            $user->genero=$request->genero;
+            $user=new User();
             $user->email=$request->email;
-            $user->email_verified_at=$request->email_verified_at;
-            $user->cedula=$request->cedula;
             $user->password=$request->password_1;
+            
+            $user->email_verified_at=$request->email_verified_at;
             $user->remember_token=$request->_token;
             $user->current_team_id=$request->current_team_id;
             $user->profile_photo_path=$request->profile_photo_path;
@@ -209,6 +205,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         // $this->validate($request, [
         //     'name' =>'required',
         //     'apellido' =>'required',
@@ -258,7 +255,9 @@ class UserController extends Controller
             $user->telefono=$request->input('telefono');
             $user->cedula=$request->input('cedula');
             $user->genero=$request->input('genero');
-            $user->password=$request->input('password_1');
+            if (isset($request->password_1)) {
+                $user->password=$request->input('password_1');
+            }
             $user->remember_token=$request->_token;
 
             if ($user->save()) {

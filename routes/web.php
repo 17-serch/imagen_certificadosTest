@@ -28,20 +28,11 @@ use App\Http\Controllers\CertificadoController;
 
 
 
-Route::get('/', function () {
-    return view('auth.login');
-});
-
-Route::get('/login', function () {
-    return view('auth.login');
-})->middleware(['auth'])->name('login');
-
-
 // http://localhost:8000/login/facebook/callback
 
 Route::get('/', function () {
     return view('auth/login');
-});
+});    
 
 Route::get('login', function () {
     return view('auth/login');
@@ -50,9 +41,16 @@ Route::get('login', function () {
 // http://localhost:8000/login/facebook/callback?code=AQAkbbK2a7W__TbEHgx2ESskMjjV
 
 
+Route::get('/', function () {
+    return view('auth.login');
+});
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
 
 
-
+// ->middleware(['auth'])->name('login')
 
 
 Route::get('createUser', [UserController::class, 'store'])->name('createUser');
