@@ -77,6 +77,12 @@ Route::get('login/{driver}', [SocialController::class, 'facebookRedirect']);
 // crea usuario de redes sociales
 Route::get('login/{driver}/callback', [SocialController::class, 'loginWithFacebook']);
 
+
+
+
+
+
+
 // Comienza devolución de vistas
 Route::get('actualizacion_datos', function () {
     return view('auth/actualizacion_datos');
