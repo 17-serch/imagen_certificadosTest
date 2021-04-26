@@ -21,9 +21,9 @@
             </div>
         @endif
         
-        <div class="container max-w-lg px-10 shadow-md py-14 mt-10 bg-white rounded">
+        <div class="container mt-16 px-7 py-20 rounded max-w-lg bg-white shadow-md">
             
-            <form action="{{ route('checkUser') }}" method="PUT" class="pb-10 w-full">
+            <form action="{{ route('checkUser') }}" method="PUT" class="w-full">
                 @csrf
                 <img src="https://www.gobiernoabierto.ec/wp-content/uploads/2020/01/Logo-Esquel-color.png" alt="logo" width="250" height="250">
                 <h1 class="mt-16 mb-6 text-4xl uppercase text-center text-black font-sans">Login</h1>
@@ -47,20 +47,32 @@
                 </label>
 
                 <label class="font-sans ml-2 uppercase tracking-wide text-gray-500 hover:text-black w-50 text-xl" for="contraseña">Contraseña
-                    <input name="password" type="password" class="mt-3 block  border border-gray-500 hover:border-black w-full p-3 rounded mb-4 text-blue-800 transition duration-300 ease-in-out transform" placeholder="contraseña"/>     
+                    <div class="flex py-1 leading-normal">
+                        <input id="password" name="password" type="password" class="mt-4 block border border-gray-500 hover:border-black w-full p-3 rounded mb-4 text-blue-800 transition duration-300 ease-in-out transform" placeholder="contraseña"/>     
+                        <button type="button" onclick="pass()" class="flex m-auto py-2 px-10 ml-2 border-0 focus:outline-none rounded-md bg-white text-black hover:text-white hover:bg-yellow-500 transition duration-300 ease-in-out transform">
+                            <div class="w-20 text-center m-auto">
+                                <input type="button" name="showPass" id="showPass" value="Ver" class="bg-transparent">
+                            </div>
+                        </button>
+                    </div>
                 </label>
 
-                <div class="grid grid-row-2 gap-4">
-                    <input id="submit" type="submit" value="Ingresar" class="w-full outline-none text-base text-white px-10 py-3 transition duration-500 ease-in-out bg-gray-500 hover:bg-blue-500 transform hover:scale-105">
-        
-                    <a href="{{ url('crear_cuenta') }}" class="no-underline text-black text-center">
-                        Crear cuenta
-                    </a>
+                <div class="grid grid-row-2 gap-1">
+                    <div class="">
+                        <input id="submit" type="submit" value="Ingresar" class="w-full outline-none text-base text-white px-10 py-3 transition duration-500 ease-in-out bg-gray-500 hover:bg-blue-500 transform hover:scale-105">
+                    </div>
+                   
+                    <div class="w-32 m-auto">
+                        <a href="{{ url('crear_cuenta') }}" class="no-underline text-black text-center">
+                            <p class="py-5 w-full">Crear cuenta</p>
+                        </a>
+                    </div>
+                
                 </div>
 
             </form>
 
-            <div class="mt-4 text-center w-full">
+            <div class="mt-0 text-center w-full">
                 <a class="grid grid-cols-8 grid-rows-1" href="{{ url('login/facebook') }}">
                     <div class="py-2 col-start-1 col-end-2">
                         <img class="transition duration-500 ease-in-out transform hover:scale-110 w-ful h-8" src="https://cdn.icon-icons.com/icons2/2108/PNG/512/facebook_icon_130940.png"/>
@@ -77,10 +89,21 @@
                     <p class="leading-loose bg-red-100 text-white py-2 rounded col-start-2 col-end-10 transition duration-500 ease-in-out hover:bg-red-600 transform hover:scale-105">Login with google</p>
                 </a>
             </div>
-
         </div>
-
      </div>
+    
+     <script>
+        function pass(){
+            var tipo = document.getElementById("password");
+            if(tipo.type == "password"){
+                tipo.type = "text";
+                document.getElementById('showPass').value = "ocultar";
+            }else{
+                tipo.type = "password";
+                document.getElementById('showPass').value = "ver";
+            }
+        }
+    </script>
 
 </body>
 </html>

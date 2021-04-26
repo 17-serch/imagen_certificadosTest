@@ -52,7 +52,7 @@
                     <div class="text-sm lg:py-0 py-2">
                         @auth
                         {{-- return view('auth.mas_cursos', compact('cursosNuevo')); --}}
-                            <a href="{{ url('cursosAprobadosUser') }}" class="px-5 py-3 text-green-300 rounded hover:text-green-100 hover:bg-white text-xl font-semibold text-left">Certificados</a>
+                            <a href="{{ url('cursosAprobadosUser', auth()->user()->id) }}" class="px-5 py-3 text-green-300 rounded hover:text-green-100 hover:bg-white text-xl font-semibold text-left">Certificados</a>
                         @endauth
                     </div>
 

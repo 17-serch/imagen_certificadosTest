@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use App\Models\Curso_Aprobado;
 
+
+use App\Models\Certificado;
+use App\Models\Detalle_User_Certificado;
+
+
 class UserController extends Controller
 {
     /**
@@ -67,12 +72,41 @@ class UserController extends Controller
 
                 // verificamos el password y email (entra y son correctos esos datos)
                 if ($user) {
-                    // $cursosAprobado=Curso_Aprobado::all();
-                    // return view('auth.cursos_recibidos', compact('cursosAprobado'));
-                    
+
+                    // logueamos al usuario
                     auth()->login($user);
-                    return redirect('cursos_recibidos');
-                 
+
+
+
+                    
+                    
+                    // =====================================================================================================
+                    // IMPRIMIMOS SOLO LOS CURSOS APROBADOS SEGÚN EL USUARIO
+                    // $certificadosUsers = Certificado::all();
+
+                    // extraemos los cursos aprobados segun el usuario
+                    $userCursosAprobados = Detalle_User_Certificado::where('id_usuarios',$user->id)->get();
+                    
+                    // aqui guardamos los ids del detalle del certificado
+                    $idsDetalle = [];
+                    foreach ($userCursosAprobados as $userCA => $userCursoAprobado) {
+                        array_push($idsDetalle, $userCursoAprobado->id);
+                    }
+
+                    // obetenemos los cursos aprobados
+                    $cursoAprobado = [];
+
+                    // segun el id del certificado
+                    foreach ($idsDetalle as $idsDetll => $idDet) {
+                        $CursosAprobados = Curso_Aprobado::where('id_detalle', $idDet)->get();
+                        foreach ($CursosAprobados as $CA => $CursosApro) {
+                            array_push($cursoAprobado, $CursosApro);
+                        }
+                    }
+                    // =====================================================================================================
+
+                    return view('auth.cursos_recibidos', ['cursosAprobado' => $cursoAprobado]);
+
                 } else {
                     $user = User::where('email', $request->email)->first();
                     $alert = $user->name. " tu contraseña es incorrecta";
@@ -92,16 +126,28 @@ class UserController extends Controller
     // un request laravel trae toda la info del formulario
     public function store(Request $request)
     {
-        $this->validate($request, [
-
-            'email' => 'required',
-            'password' => 'required',
-        ]);
+        // verificamos que los campos esten llenos
+        if ($request->email == NULL) {
+            $alert = "Llena el campo de email";
+            return view('auth/crear_cuenta', ['alert' => $alert]);
+        }
+        if ($request->password_1 == NULL or $request->password_2 == NULL) {
+            $alert = "Llena los campos de contraseña";
+            return view('auth/crear_cuenta', ['alert' => $alert]);
+        }
 
         // Si el user existe en la base de datos, no entra al if a crear el mismo user
-        $userLogueado = User::where('email', $request->email)->first();
+        $findUser = User::where('email', $request->email)->first();
 
-        if (!$userLogueado) {
+        if (!$findUser) {
+
+            if ($request->password_1 === $request->password_2) {
+                //
+            } else {
+                $alert = "Las contraseñas no son iguales";
+                return view('auth/crear_cuenta', ['alert' => $alert]);
+            }
+
             $user=new User();        
             $user->name=$request->name;
             $user->apellido=$request->apellido;
@@ -115,9 +161,8 @@ class UserController extends Controller
             $user->current_team_id=$request->current_team_id;
             $user->profile_photo_path=$request->profile_photo_path;
             $user->id_roles=$request->id_roles;
-            
-            if($user->save()){
 
+            if($user->save()){
                 // logueamos al usuario validado
                 auth()->login($user);
                 // redireccionamos a otra vista
@@ -139,8 +184,8 @@ class UserController extends Controller
      */
     public function show($id)
     {    
-        // $user=User::findf0rFail($id);
-        // return new UserResource($user);
+        $user=User::findf0rFail($id);
+        return new UserResource($user);
     }
 
     /**
@@ -164,15 +209,46 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // $this->validate($request, [
+        //     'name' =>'required',
+        //     'apellido' =>'required',
+        //     'telefono' =>'required',
+        //     'cedula' =>'required',
+        //     'genero' =>'required',
+        //     'password' =>'required'
+        // ]);
 
-        $this->validate($request, [
-            'name' =>'required',
-            'apellido' =>'required',
-            'telefono' =>'required',
-            'cedula' =>'required',
-            'genero' =>'required',
-            'password' =>'required'
-        ]);
+        // verificamos que todos los campos se han direfentes de NULL
+        if ($request->name == NULL or $request->apellido == NULL or $request->cedula == NULL or $request->telefono == NULL or $request->genero == NULL) {
+            $alert = "Llena todos los campos";
+            return view('auth/actualizacion_datos', ['alert' => $alert]);
+        }
+        
+        // verificamos si el número de cédula que ingresa el usuario ya esta registrado
+        $findUser = User::where('cedula', $request->cedula)->first();
+        if ($findUser) {
+            $alert = "Número de cedula ya registrado";
+            return view('auth/actualizacion_datos', ['alert' => $alert]);
+        }
+        // verificamos si estamos pidiendo contraseña
+        if (isset($request->password_1)) {
+            if (isset($request->password_2)) {
+
+                // verificamos que los campos de contraseña no esten vacios
+                if ($request->password_1 == NULL or $request->password_2 == NULL) {
+                    $alert = "Llena los campos de contraseñas";
+                    return view('auth/actualizacion_datos', ['alert' => $alert]);
+                } else {
+                    // verificamos si las contraseña son iguales
+                    if ($request->password_1 != $request->password_2) {
+                        $alert = "Escribe lo mismo, al crear y confirmar contraseña";
+                        return view('auth/actualizacion_datos', ['alert' => $alert]);
+                    } else {
+
+                    }
+                }
+            }
+        }
 
         $findUser = User::where('email', $request->email)->first();
         if (!$findUser) {
@@ -182,20 +258,17 @@ class UserController extends Controller
             $user->telefono=$request->input('telefono');
             $user->cedula=$request->input('cedula');
             $user->genero=$request->input('genero');
-            $user->password=$request->input('password');
+            $user->password=$request->input('password_1');
             $user->remember_token=$request->_token;
 
             if ($user->save()) {
-                $userLogueado = $user;
                 $cursosAprobado=Curso_Aprobado::all();
                 // return view('auth.cursos_recibidos', compact('cursosAprobado'));
-
                 return redirect('cursos_recibidos');
             }
-
-        } else {
-            return redirect('actualizacion_datos');
         }
+        return redirect('actualizacion_datos');
+
     }
 
     /**
@@ -231,9 +304,40 @@ class UserController extends Controller
     }
 
     // muestra los cuersos aprobados del usuario
-    public function cursosAprobados () {
-        $cursosAprobado = Curso_Aprobado::all();
-        return view('auth.cursos_recibidos', compact('cursosAprobado'));
+    public function cursosAprobados ($id) {
+
+        
+        $user = User::where('id', $id)->first();
+
+
+
+
+        // =====================================================================================================
+        // IMPRIMIMOS SOLO LOS CURSOS APROBADOS SEGÚN EL USUARIO
+        // $certificadosUsers = Certificado::all();
+
+        // extraemos los cursos aprobados segun el usuario
+        $userCursosAprobados = Detalle_User_Certificado::where('id_usuarios',$user->id)->get();
+        
+        // aqui guardamos los ids del detalle del certificado
+        $idsDetalle = [];
+        foreach ($userCursosAprobados as $userCA => $userCursoAprobado) {
+            array_push($idsDetalle, $userCursoAprobado->id);
+        }
+
+        // obetenemos los cursos aprobados
+        $cursoAprobado = [];
+
+        // segun el id del certificado
+        foreach ($idsDetalle as $idsDetll => $idDet) {
+            $CursosAprobados = Curso_Aprobado::where('id_detalle', $idDet)->get();
+            foreach ($CursosAprobados as $CA => $CursosApro) {
+                array_push($cursoAprobado, $CursosApro);
+            }
+        }
+        // =====================================================================================================
+
+        return view('auth.cursos_recibidos', ['cursosAprobado' => $cursoAprobado]);
     }
 
     public function updatePageReceivedCourses () {

@@ -9,10 +9,10 @@ use Exception;
 use Auth;
 use App\Models\SocialProfile;
 use App\Models\User;
+
+use App\Models\Certificado;
 use App\Models\Curso_Aprobado;
-
-
-use App\CursoAprobadoController;
+use App\Models\Detalle_User_Certificado;
 
 class SocialController extends Controller
 {
@@ -57,17 +57,42 @@ class SocialController extends Controller
                 'social_avatar'=>$userSocialite->getAvatar()
             ]);
             auth()->login($user);
-            return redirect('actualizacion_datos');
+            $pedirPass = TRUE;
+            // return redirect('actualizacion_datos');
+            return view('auth/actualizacion_datos', ['pedirPass' => $pedirPass]);
         }
 
-        // traemos todos los cursos que aprobo
-        $allCourses = Curso_Aprobado::all();
-
-        // buscamos al usuario con ese email para darle acceso
+        // buscamos al usuario con ese email para loguearlo
         $user = User::where('email', $userSocialite->getEmail())->first();
-       
         auth()->login($user);
-        // return redirect('cursos_recibidos');
-        return view('auth.cursos_recibidos', ['cursosAprobado' => $allCourses]);
+
+
+        // =====================================================================================================
+        // IMPRIMIMOS SOLO LOS CURSOS APROBADOS SEGÚN EL USUARIO
+        // $certificadosUsers = Certificado::all();
+
+        // extraemos los cursos aprobados segun el usuario
+        $userCursosAprobados = Detalle_User_Certificado::where('id_usuarios',$user->id)->get();
+        
+        // aqui guardamos los ids del detalle del certificado
+        $idsDetalle = [];
+        foreach ($userCursosAprobados as $userCA => $userCursoAprobado) {
+            array_push($idsDetalle, $userCursoAprobado->id);
+        }
+
+        // obetenemos los cursos aprobados
+        $cursoAprobado = [];
+
+        // segun el id del certificado
+        foreach ($idsDetalle as $idsDetll => $idDet) {
+            $CursosAprobados = Curso_Aprobado::where('id_detalle', $idDet)->get();
+            foreach ($CursosAprobados as $CA => $CursosApro) {
+                array_push($cursoAprobado, $CursosApro);
+            }
+        }
+        // =====================================================================================================
+
+        return view('auth.cursos_recibidos', ['cursosAprobado' => $cursoAprobado]);
+
     }
 }

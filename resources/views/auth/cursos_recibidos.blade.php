@@ -29,7 +29,7 @@
                 </a> 
             </div>
             
-            <!--- sm md lg xl 2xñ -->
+            <!--- sm md lg xl 2xl -->
             <div class="flex sm:justify-end">
                 
                 <div class="block lg:hidden mt-5 ml-3">
@@ -48,7 +48,7 @@
                     <div class="text-sm lg:py-0 py-2">
                         @auth
                             <form style="display: inline" action="logout" method="POST">
-                                <a href="logout" onclick="this.closest('form').submit()" class="px-5 py-3 text-green-300 rounded hover:text-green-100 hover:bg-white text-xl font-semibold text-left">Cerrar sesión</a>
+                                <a href="{{ url('logout') }}" onclick="this.closest('form').submit()" class="px-5 py-3 text-green-300 rounded hover:text-green-100 hover:bg-white text-xl font-semibold text-left">Cerrar sesión</a>
                             </form>
                         @endauth         
                     </div>
@@ -83,10 +83,9 @@
 
 
 
-    @auth
-        <!-- Contendor del contenido -->
-        <div class="container">
-
+    <!-- Contendor del contenido -->
+    <div class="container h-screen">
+        @auth
             <!-- Imprimimos datos del usuario ( nombre y num.cedula ) -->
             <div class="py-6 px-4 sm:px-10 lg:items-center">
                 <ul>
@@ -122,7 +121,7 @@
                             <tr class="border-collapse border border-grey-100 ">
                                 <td class="p-3">{{$curso->nombre}}</td>
                                 <td class="p-3">{{$curso->horas}}</td>
-                                <td class="p-3 text-black text-opacity-40 hover:text-opacity-100"><a href="formulario">858</a></td>
+                                <td class="p-3 text-black text-opacity-40 hover:text-opacity-100"><a href="{{ url('formulario') }}">858</a></td>
                             </tr>
                             @endforeach()
                         @endif
@@ -131,23 +130,24 @@
                 </table>
             </div>
             
-            <!--======= footer =========-->
-            <div class=" bg-white shadow">
-                <div class="text-right text-green-300 shadow font-sans text-lg">
-                    <div class="flex justify-end py-3 px-5 hover:text-green-300 hover:bg-grey-100">
-                        <ul>
-                            <h3 class="font-bold">CONTÁCTANOS</h3>
-                            <li>Av. Colón E4-175 entre Amazonas y Foch, Ed.</li>
-                            <li>Torres de la Colón, Mezzanine Of. 12 Quito - Ecuador</li>
-                            <li>fundacion@esquel.org.ec</li>
-                            <li>+(5932) 252-0001</li>
-                        </ul>
-                    </div>
-                </div>
+        @endauth
+    </div>
+        
+    <!--======= footer =========-->
+    <div class=" bg-white shadow">
+        <div class="text-right text-green-300 shadow font-sans text-lg">
+            <div class="flex justify-end py-3 px-5 hover:text-green-300 hover:bg-grey-100">
+                <ul>
+                    <h3 class="font-bold">CONTÁCTANOS</h3>
+                    <li>Av. Colón E4-175 entre Amazonas y Foch, Ed.</li>
+                    <li>Torres de la Colón, Mezzanine Of. 12 Quito - Ecuador</li>
+                    <li>fundacion@esquel.org.ec</li>
+                    <li>+(5932) 252-0001</li>
+                </ul>
             </div>
         </div>
-    @endauth
-        
+    </div>
+
     <!--======= footer =========-->
     <footer class=" bg-black shadow">
         <ul class="py-5 border border-b-0 border-l-0">
