@@ -156,7 +156,7 @@ class UserController extends Controller
             $user->email=$request->email;
             $user->email_verified_at=$request->email_verified_at;
             $user->cedula=$request->cedula;
-            $user->password=$request->password;
+            $user->password=$request->password_1;
             $user->remember_token=$request->_token;
             $user->current_team_id=$request->current_team_id;
             $user->profile_photo_path=$request->profile_photo_path;
