@@ -10,6 +10,13 @@ module.exports = {
 
     theme: {
         extend: {
+            margin: {
+                sm: '8px',
+                md: '16px',
+                lg: '24px',
+                xl: '48px',
+                m1: '73vh',
+            },
             container:{
                 center:true
             },

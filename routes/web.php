@@ -13,15 +13,13 @@ use App\Http\Controllers\CertificadoController;
 
 
 
-
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
-
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 
 
@@ -38,8 +36,9 @@ Route::get('login', function () {
     return view('auth/login');
 });
 
-// http://localhost:8000/login/facebook/callback?code=AQAkbbK2a7W__TbEHgx2ESskMjjV
 
+
+// http://localhost:8000/login/facebook/callback?code=AQAkbbK2a7W__TbEHgx2ESskMjjV
 
 Route::get('/', function () {
     return view('auth.login');
@@ -49,8 +48,8 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
-
 // ->middleware(['auth'])->name('login')
+
 
 
 Route::get('createUser', [UserController::class, 'store'])->name('createUser');
@@ -82,6 +81,10 @@ Route::get('login/{driver}/callback', [SocialController::class, 'loginWithFacebo
 
 
 // Comienza devolución de vistas
+Route::get('perfil', function () {
+    return view('profile/show');
+})->name('perfil');
+
 Route::get('actualizacion_datos', function () {
     return view('auth/actualizacion_datos');
 });

@@ -26,7 +26,7 @@
             <form action="{{ route('checkUser') }}" method="PUT" class="w-full">
                 @csrf
                 <img src="https://www.gobiernoabierto.ec/wp-content/uploads/2020/01/Logo-Esquel-color.png" alt="logo" width="250" height="250">
-                <h1 class="mt-16 mb-6 text-4xl uppercase text-center text-black font-sans">Login</h1>
+                <h1 class="mt-16 mb-6 text-4xl uppercase text-center text-black font-sans">Iniciar sesión</h1>
                 
                 @if ($errors->all())
                     <ul class="bg-red-100 p-5 text-white my-5">

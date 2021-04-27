@@ -1,21 +1,21 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+
+<nav x-data="{ open: false }" class="fixed w-full bg-white border-b-2 shadow-2xl py-6">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between ">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                <div class="flex-shrink-0 block lg:flex items-center">
+                    <a href="https://www.esquel.org.ec/" class="mx-4 lg:w-auto w-full">
+                        <img alt="logo esquel" width="200" height="200" src="https://www.esquel.org.ec/templates/g5_hydrogen/custom/images/Logo%20Esquel%20Horizontal.svg">
                     </a>
+                    <a href="https://esquelclic.org/" class="mx-4 lg:w-auto w-full">
+                        <img alt="esquel clic" width="210" height="200" src="https://esquelclic.org/images/logos/LogoCLIC%20.svg">
+                    </a> 
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-jet-nav-link>
-                </div>
+              
+                
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -92,9 +92,6 @@
 
                         <x-slot name="content">
                             <!-- Account Management -->
-                            <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
-                            </div>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
@@ -109,7 +106,7 @@
                             <div class="border-t border-gray-100"></div>
 
                             <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
+                            {{-- <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
@@ -117,14 +114,39 @@
                                                 this.closest('form').submit();">
                                     {{ __('Log Out') }}
                                 </x-jet-dropdown-link>
-                            </form>
+                            </form> --}}
+
+                            <!-- Campos que aparecen en el menu desplegable -->
+
+                            <!-- nos lleva a mas cursos -->
+                            <div class="text-sm py-2 ml-4">
+                                @auth
+                                <a href="{{ url('masCursos') }}" class="">Mas cursos</a>
+                                @endauth         
+                            </div>
+                            <!-- nos lleva a cursos aprobados -->
+                            <div class="text-sm py-2 ml-4">
+                                @auth
+                                {{-- return view('auth.mas_cursos', compact('cursosNuevo')); --}}
+                                <a href="{{ url('cursosAprobadosUser', auth()->user()->id) }}">Certificados</a>
+                                @endauth
+                            </div>
+                            <!-- nos lleva a cerrar sesión -->
+                            <div class="text-sm py-2 ml-4">
+                                @auth
+                                    <form style="display: inline" action="logout" method="POST">
+                                        <a href="{{ url('logout') }}" onclick="this.closest('form').submit()" class="">Cerrar sesión</a>
+                                    </form>
+                                @endauth         
+                            </div>
+                           
                         </x-slot>
                     </x-jet-dropdown>
                 </div>
             </div>
 
             <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
+            <div class="-mr-2 flex items-center sm:hidden mt-40">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -137,11 +159,7 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
-        </div>
+        
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
@@ -171,7 +189,7 @@
                 @endif
 
                 <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
+                {{-- <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
                     <x-jet-responsive-nav-link href="{{ route('logout') }}"
@@ -179,7 +197,28 @@
                                     this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-jet-responsive-nav-link>
-                </form>
+                </form> --}}
+
+                <div class="text-sm py-2 ml-4">
+                    @auth
+                    <a href="{{ url('masCursos') }}" class="">Mas cursos</a>
+                    @endauth         
+                </div>
+                <!-- nos lleva a cursos aprobados -->
+                <div class="text-sm py-2 ml-4">
+                    @auth
+                    {{-- return view('auth.mas_cursos', compact('cursosNuevo')); --}}
+                    <a href="{{ url('cursosAprobadosUser', auth()->user()->id) }}">Certificados</a>
+                    @endauth
+                </div>
+                <!-- nos lleva a cerrar sesión -->
+                <div class="text-sm py-2 ml-4">
+                    @auth
+                        <form style="display: inline" action="logout" method="POST">
+                            <a href="{{ url('logout') }}" onclick="this.closest('form').submit()" class="">Cerrar sesión</a>
+                        </form>
+                    @endauth         
+                </div>
 
                 <!-- Team Management -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
