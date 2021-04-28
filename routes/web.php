@@ -30,7 +30,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/', function () {
     return view('auth/login');
-});    
+});
 
 Route::get('login', function () {
     return view('auth/login');
@@ -113,3 +113,8 @@ Route::get('subir_certificados', function () {
     return view('auth/subir_certificados');
 });
 // Termina devolución de vistas
+
+
+Route::get('curso__nuevos__destroy/{id}',[CursoNuevoController::class, 'destroy'])->name('curso__nuevos__destroy');
+Route::resource('cursos', CursoNuevoController::class);
+

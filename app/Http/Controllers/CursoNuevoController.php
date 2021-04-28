@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Curso_Nuevo;
-use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Resources\CursoNuevoResource;
+
 class CursoNuevoController extends Controller
 {
     /**
@@ -15,8 +14,10 @@ class CursoNuevoController extends Controller
      */
     public function index()
     {
-        $cursosNuevo=Curso_Nuevo::all();
-        return view ('mas_cursos',compact('cursosNuevo'));
+        $cursosNuevo=Curso_Nuevo::latest()->paginate(5);
+
+        return view ('cursos.index',compact('cursosNuevo'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);;
     }
 
     /**
@@ -26,7 +27,7 @@ class CursoNuevoController extends Controller
      */
     public function create()
     {
-        //
+        return view('cursos.create');
     }
 
     /**
@@ -37,69 +38,73 @@ class CursoNuevoController extends Controller
      */
     public function store(Request $request)
     {
-        $cursosNuevo=new Curso_Nuevo();
-        $cursosNuevo->nombre=$request->nombre;
-        $cursosNuevo->horas=$request->horas;
-        $cursosNuevo->información=$request->información;
-        if($cursosNuevo->save()){
-            return new CursoNuevoResource($cursosNuevo);
-        }
+        $request->validate([
+            'nombre' => 'required',
+            'horas' => 'required',
+            'información' => 'required',
+        ]);
+
+        Curso_Nuevo::create($request->all());
+
+        return redirect()->route('cursos.index')
+        ->with('success','Curso creado con éxito.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Curso_Nuevo  $curso_Nuevo
+     * @param  \App\Curso_Nuevo  $curso_Nuevo
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $cursosNuevo=Curso_Nuevo::findOrFail($id);
-        return new  CursoNuevoResource($cursosNuevo);
+        $curso_Nuevo  = Curso_Nuevo::where('id', $id)->first();
+        return view('cursos.show',compact('curso_Nuevo'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Curso_Nuevo  $curso_Nuevo
+     * @param  \App\Curso_Nuevo  $curso_Nuevo
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        $cursosNuevo=Curso_Nuevo::find($id);
-        return $cursosNuevo;
+        $curso_Nuevo = Curso_Nuevo::where('id', $id)->first();
+        return view('cursos.edit',compact('curso_Nuevo'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Curso_Nuevo  $curso_Nuevo
+     * @param  \App\Curso_Nuevo  $curso_Nuevo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-        $cursosNuevo= Curso_Nuevo::findOrFail($id);
-        $cursosNuevo->nombre=$request->nombre;
-        $cursosNuevo->horas=$request->horas;
-        $cursosNuevo->información=$request->información;
-        if($cursosNuevo->save()){
-            return new CursoNuevoResource($cursosNuevo);
+        $curso_Nuevo = Curso_Nuevo::findOrFail($id);
+        $curso_Nuevo->nombre = $request->input('nombre');
+        $curso_Nuevo->horas = $request->input('horas');
+        $curso_Nuevo->información = $request->input('información');
+        if ($curso_Nuevo->save()) {
+            return view('cursos.show',compact('curso_Nuevo'));
         }
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Curso_Nuevo  $curso_Nuevo
+     * @param  \App\Curso_Nuevo  $curso_Nuevo
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $cursosNuevo=Curso_Nuevo::findOrFail($id); 
-        if($cursosNuevo->delete()){
-            return new CursoNuevoResource($cursosNuevo);
-        }
+        $curso_Nuevo = Curso_Nuevo::findOrFail($id);
+        $curso_Nuevo->delete();
 
+        return redirect()->route('cursos.index')
+        ->with('success','Curso eliminado con éxito.');
     }
 }
