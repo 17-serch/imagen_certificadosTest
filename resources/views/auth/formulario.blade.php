@@ -60,6 +60,10 @@
                                         Limpiar
                                     </button>
 
+                                    <button type="button" class="bg-blue-500 hover:bg-red-600 text-white py-2 px-4 font-bold rounded "> <a href="/descargas/create">
+                                            Descargar
+                                        </a></button>
+
                             </form>
                             </div>
 
