@@ -10,6 +10,7 @@ use App\Http\Controllers\EncuestaController;
 use App\Http\Controllers\MasCursosController;
 use App\Http\Controllers\CursoNuevoController;
 use App\Http\Controllers\CertificadoController;
+use App\Http\Controllers\DescargaController;
 
 
 
@@ -112,9 +113,12 @@ Route::get('nuevos_cursos', function () {
 Route::get('subir_certificados', function () {
     return view('auth/subir_certificados');
 });
+
 // Termina devolución de vistas
 
 
 Route::get('curso__nuevos__destroy/{id}',[CursoNuevoController::class, 'destroy'])->name('curso__nuevos__destroy');
 Route::resource('cursos', CursoNuevoController::class);
 
+Route::get('descargas/{uuid}/download', [DescargaController::class, 'download'])->name('descargas.download');
+Route::resource('descargas', DescargaController::class)->middleware('auth');
