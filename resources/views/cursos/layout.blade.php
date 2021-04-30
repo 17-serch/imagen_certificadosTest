@@ -49,7 +49,7 @@
                         <a href="https://www.esquel.org.ec/">
                             <img src="https://www.esquel.org.ec/templates/g5_hydrogen/custom/images/Logo%20Esquel%20Horizontal.svg" alt="logo_esquel" class="fill-current h-100 w-100 mr-2" width="250" height="250">
                         </a>
-                        <a href="https://esquelclic.org/">
+                        <a href="https://esquelcslic.org/">
                             <img class="fill-current h-100 w-100 mr-2" width="250" height="250" src="https://esquelclic.org/images/logos/LogoCLIC%20.svg" alt="logo_esquel_clic">
                         </a>
 
